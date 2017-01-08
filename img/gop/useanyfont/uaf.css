@@ -1,0 +1,13 @@
+			@font-face {
+				font-family: 'book-antiqua';
+				font-style: normal;
+				src: url('//greenorchardphoto.com/wp-content/uploads/useanyfont/151009074402Book-Antiqua.eot');
+				src: local('book-antiqua'), url('//greenorchardphoto.com/wp-content/uploads/useanyfont/151009074402Book-Antiqua.eot') format('embedded-opentype'), url('//greenorchardphoto.com/wp-content/uploads/useanyfont/151009074402Book-Antiqua.woff') format('woff');
+			}
+            
+            .book-antiqua{font-family: 'book-antiqua' !important;}
+            
+						p, blockquote, li{
+					font-family: 'book-antiqua' !important;
+				}
+		
