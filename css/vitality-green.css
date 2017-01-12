@@ -958,7 +958,7 @@ aside.cta-quote span.quote {
 #portfoliolist .mix {
   width: 31%;
   margin: 1%;
-  display: none;
+  /*display: none;*/
   float: left;
   overflow: hidden;
 }
@@ -967,6 +967,7 @@ aside.cta-quote span.quote {
   position: relative !important;
   background: #222;
   cursor: pointer;
+  max-height: 235.516px;
 }
 #portfoliolist .mix .portfolio-wrapper img {
   max-width: 100%;

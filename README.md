@@ -22,7 +22,7 @@ Done:
 	- Extract feedback from facebook
 	- Contact me page
 		- Ensure seamless notifications
-
+	- Update portfolio section to be dynamic for easier addition/removal
 
 For Rafa:
 - Makeup artist name?
