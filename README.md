@@ -2,7 +2,6 @@
 
 ToDo:
 	- Book me now modal/page
-	- Portfolio
 	- Build your own package page
 	- Easier way to post pictures
 	- Pay now (PayPal?)
@@ -23,6 +22,7 @@ Done:
 	- Contact me page
 		- Ensure seamless notifications
 	- Update portfolio section to be dynamic for easier addition/removal
+	- Portfolio
 
 For Rafa:
 - Makeup artist name?
@@ -37,6 +37,8 @@ Time Spent:
 	01/08/17 -  10 hours
 	01/09/17 -   4 hours
 	01/10/17 -   2 hours
+	01/11/17 - 	 2 hours
+
 
 
 
