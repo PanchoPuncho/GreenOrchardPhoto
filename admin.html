@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Facebook Login JavaScript Example</title>
+<meta charset="UTF-8">
+<!-- Favicon -->
+<link rel="shortcut icon" href="img/gop/logos/icon.png" type="image/x-icon">
+
+<!-- Bootstrap Core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+<!-- Default Fonts (IMPORTANT: Delete these if you are using a different body style!) -->
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,600,500,700,800,900' rel='stylesheet' type='text/css'>
+
+<!-- Modern Style Fonts (IMPORTANT: Delete these unless you are using body.modern!) -->
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Cardo:400,400italic,700' rel='stylesheet' type='text/css'>
+
+<!-- Vintage Style Fonts (IMPORTANT: Delete these unless you are using body.vintage!) -->
+<link href='https://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Cardo:400,400italic,700' rel='stylesheet' type='text/css'>
+
+<!-- Plugin CSS -->
+<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="vendor/owl-carousel/owl.carousel.css" rel="stylesheet" type="text/css">
+<link href="vendor/owl-carousel/owl.theme.css" rel="stylesheet" type="text/css">
+<link href="vendor/owl-carousel/owl.transitions.css" rel="stylesheet" type="text/css">
+<link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+<link href="vendor/formstone/background.css" rel="stylesheet" type="text/css">
+<link href="vendor/animate.css/animate.min.css" rel="stylesheet" type="text/css">
+<link href="vendor/device-mockups/device-mockups.min.css" rel="stylesheet" type="text/css">
+<link href="css/vitality-green.css" rel="stylesheet" type="text/css">
+</head>
+
+<body id="page-top" ng-app="myApp" ng-controller="myAdminCtrl">
+	<!-- Navigation -->
+	<!-- NOTE: .navbar-default and .navbar-inverse are both supported with this theme. -->
+	<nav class="navbar navbar-inverse navbar-fixed-top navbar-expanded" style="{{blur}}">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<i class="fa fa-bars"></i> Menu
+				</button>
+				<a class="navbar-brand page-scroll" href="#page-top">
+					<img src="img/gop/logos/gopMenuLogo.png" class="img-responsive" alt="Green Orchard Production">
+				</a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+				  	<li class="hidden">
+					  	<a class="page-scroll" href="#page-top"></a>
+				  	</li>
+				 	<li>
+						<a class="page-scroll" href="#gallery-add">Add to Gallery</a>
+				  	</li>
+				  	<li>
+						<a class="page-scroll" href="#gallery-delete">Delete from Gallery</a>
+				  	</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Header -->
+	<header class="video" style="{{blur}}">
+	  	<div class="overlay"></div>
+	  		<div class="intro-content" style="width: 100%;">
+				<img src="img/gop/logos/logo.png" class="img-responsive img-centered" alt="Green Orchard Productions" style="max-width: 70vw;">
+				<hr class="colored">
+				<div class="brand-name-subtext">Welcome, Admin!</div>
+	  		</div>
+	  	<div class="scroll-down page-scroll">
+			<a class="btn page-scroll" href="#gallery-add"><i class="fa fa-angle-down"></i></a>
+	  	</div>
+	</header>
+
+	<!-- Gallery Add Section -->
+	<section id="gallery-add" style="{{blur}}">
+		<div class="container wow fadeIn">
+		  	<div class="row">
+				<div class="col-lg-12 text-center">
+			  		<h2>Add Image To Gallery :{{data.photo}}:{{data.cat}}:</h2>
+			  		<hr class="colored">
+			  		<p>Please select the image to upload and its cat.</p>
+				</div>
+		  	</div>
+		  	<div class="row content-row">
+				<div class="col-lg-8 col-lg-offset-2">
+			  		<form name="addPhotoForm" id="addPicForm" role="form" action="php/uploadImage.php" method="post" enctype="multipart/form-data" novalidate>
+						<div class="row control-group">
+							<div class="col-sm-6 form-group">
+								<div>
+									<label>Image</label>
+								</div>
+								<input type="file" name="fileToUpload" id="fileToUpload" ng-model="data.photo" ng-change="check()" required data-validation-required-message="Please select your image.">
+								<p class="help-block text-danger"></p>
+						  	</div>
+				  			<div class="col-sm-6 form-group controls">
+				  				<div>
+									<label>Category</label>
+								</div>
+								<div>
+									<select class="form-control" ng-model="data.cat" ng-change="check()" required data-validation-required-message="Please select the corresponding category.">
+		                                <option value="" disabled selected>-- category --</option>
+		                                <option value="WEDD">wedding</option>
+		                                <option value="SCEN">scenery</option>
+		                                <option value="AUTO">automobile</option>
+		                                <option value="GRPH">graphic</option>
+		                            </select>
+									<p class="help-block text-danger"></p>
+								</div>
+					  		</div>
+						</div>
+						<br>
+						<br>
+						<div class="row text-center">
+					  		<div class="form-group col-xs-12">
+								<button type="submit" class="btn btn-outline-dark" ng-disabled="disabled" ng-click="addPhoto()">Add Image</button>
+				  			</div>
+						</div>
+			  		</form>
+				</div>
+		  	</div>
+		</div>
+	</section>
+
+	<!-- Gallery Delete Section -->
+	<section id="gallery-delete" style="{{blur}} background-color:#f5f5f5;">
+	  	<div class="container text-center wow fadeIn">
+		  	<h2>Delete Image From Gallery</h2>
+		  	<hr class="colored">
+		  	<div class="fb-like text-center row" data-share="true" data-width="0" data-show-faces="false" style="margin-left: 18px;"></div>
+		  	<div class="row content-row">
+			  	<div class="col-lg-12">
+				  	<div class="portfolio-filter">
+					  	<ul id="filters" class="clearfix">
+						  	<li>
+							  	<button class="filter {{site.allActive}}" ng-click="filterPortfolioPhotos( 'all' )">All</button>
+						  	</li>
+						  	<li>
+							  	<button class="filter {{site.weddingActive}}" ng-click="filterPortfolioPhotos( 'wedding' )">Wedding</button>
+						  	</li>
+						  	<li>
+							  	<button class="filter {{site.sceneryActive}}" ng-click="filterPortfolioPhotos( 'scenery' )">Scenery</button>
+						  	</li>
+						  	<li>
+							  	<button class="filter {{site.autoActive}}" ng-click="filterPortfolioPhotos( 'auto' )">Autos</button>
+						  	</li>
+							 <li>
+								<button class="filter {{site.graphicActive}}" ng-click="filterPortfolioPhotos( 'graphic' )">Graphics</button>
+							</li>
+					  	</ul>
+				  	</div>
+			  	</div>
+		  	</div>
+		  	<div class="row">
+			  	<div class="col-lg-12">
+				  	<div id="portfoliolist">
+					  	<div ng-repeat="x in site.portfolio.photos" class="mix" href="{{x.photo}}" title="Client Name">
+						  	<div style="background-color:#5CB85C;">
+						  		<button ng-click="deletePhoto( x.id )" class="delete">&times;</button>
+						  	</div>
+						  	<div class="portfolio-wrapper">
+							  	<img class="img-responsive" src="{{x.photo}}" type="button" data-toggle="modal" data-target="#{{x.id}}" alt="{{x.photo}}">
+						  	</div>
+					  	</div>
+				  	</div>
+			  	</div>
+		  	</div>
+	  	</div>
+	</section>
+
+	<!-- Login Modal -->
+	<div class="modal {{modalShow}} myLoginModal" id="loginModal" role="dialog" style="margin-top: 25vh;">
+	  	<div class="modal-dialog modal-sm">
+		  	<div class="modal-content">
+			  	<div class="modal-body">
+					<form class="form-signin" novalidate>
+					  	<h3 id="form-signin-heading" class="text-center">Please Sign In</h3>
+					  	<hr class="colored">
+					  	<h5 ng-show="modalMessage != null" class="text-center text-danger">{{modalMessage}}</h5>
+					  	<input type="username" id="inputEmail" class="form-control" placeholder="Username" ng-model="username" required>
+					  	<input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="password" required>
+					  	<br>
+					  	<button class="btn btn-lg btn-default btn-block" id="loginButton" ng-click="login(username,password)">Sign In</button>
+					</form>
+			  	</div>
+		  	</div>
+	  	</div>
+	</div>
+
+	<!-- Core Scripts -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="js/classie.js"></script>
+	<script src="js/cbpAnimatedHeader.js"></script>
+
+	<!-- Plugin Scripts -->
+	<script src="vendor/jquery.easing/jquery.easing.min.js"></script>
+	<script src="vendor/owl-carousel/owl.carousel.js"></script>
+	<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<script src="vendor/formstone/core.js"></script>
+	<script src="vendor/formstone/transition.js"></script>
+	<script src="vendor/formstone/background.js"></script>
+	<script src="vendor/mixitup/jquery.mixitup.js"></script>
+	<script src="vendor/wow/wow.min.js"></script>
+
+	<!-- Contact Form Scripts -->
+	<script src="js/contact_me.js"></script>
+	<script src="js/jqBootstrapValidation.js"></script>
+
+	<!-- Vitality Theme Scripts -->
+	<script src="js/vitality.js"></script>
+
+	<!-- Angular -->
+	<script src="js/angular.min.js"></script>
+	<script src="js/myApp.js"></script>
+	<script src="js/myAdminCtrl.js"></script>
+
+</body>
+</html>

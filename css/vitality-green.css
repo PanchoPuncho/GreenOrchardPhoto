@@ -1015,6 +1015,12 @@ aside.cta-quote span.quote {
 #portfoliolist .mix:hover .portfolio-wrapper .caption {
   bottom: 0px;
 }
+.delete {
+   background-color: #5CB85C;
+}
+.delete:hover{
+   background-color: red;
+}
 /*  #Mobile (Portrait) - Note: Design for a width of 320px */
 @media only screen and (max-width: 767px) {
   #portfoliolist .mix {

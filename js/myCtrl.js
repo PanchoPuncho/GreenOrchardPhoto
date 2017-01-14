@@ -1,14 +1,18 @@
-app.controller("myCtrl", function ($scope, $http) {
+app.controller("myCtrl", ['$scope', '$window', function ($scope, $window) {
     /********** GLOBAL VARIABLES **********/
 
-    /*$scope.data = {
-        value: {
-            
+
+    $scope.data = {
+        user : {
+            id      : "",
+            name    : "",
+            email   : "",
+            picture : ""
         },
-        options: {
+        options : {
             
         }
-    };*/
+    };
 
     $scope.site = {
         allActive : "active",
@@ -18,27 +22,27 @@ app.controller("myCtrl", function ($scope, $http) {
         graphicActive : "",
         portfolio : {
             allPhotos : [
-                { id : "000000", photo : "img/gop/wedding/1.jpg", cat : "wedding" },
-                { id : "000001", photo : "img/gop/scenery/1.jpg", cat : "scenery" },
-                { id : "000002", photo : "img/gop/automobile/1.jpg", cat : "auto" },
-                { id : "000015", photo : "img/gop/graphic/1.jpg", cat : "graphic" },
-                { id : "000003", photo : "img/gop/wedding/2.jpg", cat : "wedding" },
-                { id : "000004", photo : "img/gop/scenery/2.jpg", cat : "scenery" },
-                { id : "000005", photo : "img/gop/automobile/2.jpg", cat : "auto" },
-                { id : "000016", photo : "img/gop/graphic/2.jpeg", cat : "graphic" },
-                { id : "000006", photo : "img/gop/wedding/3.jpg", cat : "wedding" },
-                { id : "000007", photo : "img/gop/scenery/3.jpg", cat : "scenery" },
-                { id : "000008", photo : "img/gop/automobile/3.jpg", cat : "auto" },
-                { id : "000017", photo : "img/gop/graphic/3.jpg", cat : "graphic" },
-                { id : "000009", photo : "img/gop/wedding/4.jpg", cat : "wedding" },
-                { id : "000010", photo : "img/gop/scenery/4.jpg", cat : "scenery" },
-                { id : "000011", photo : "img/gop/automobile/4.jpg", cat : "auto" },
-                { id : "000018", photo : "img/gop/graphic/4.jpg", cat : "graphic" },
-                { id : "000012", photo : "img/gop/wedding/5.jpg", cat : "wedding" },
-                { id : "000013", photo : "img/gop/automobile/5.jpg", cat : "auto" },
-                { id : "000019", photo : "img/gop/graphic/5.jpg", cat : "graphic" },
-                { id : "000014", photo : "img/gop/automobile/6.jpg", cat : "auto" },
-                { id : "000020", photo : "img/gop/graphic/6.jpg", cat : "graphic" }
+                { id : "000000", photo : "img/gop/uploads/wedding1.jpg", cat : "wedding" },
+                { id : "000001", photo : "img/gop/uploads/scenery1.jpg", cat : "scenery" },
+                { id : "000002", photo : "img/gop/uploads/auto1.jpg", cat : "auto" },
+                { id : "000015", photo : "img/gop/uploads/graphic1.jpg", cat : "graphic" },
+                { id : "000003", photo : "img/gop/uploads/wedding2.jpg", cat : "wedding" },
+                { id : "000004", photo : "img/gop/uploads/scenery2.jpg", cat : "scenery" },
+                { id : "000005", photo : "img/gop/uploads/auto2.jpg", cat : "auto" },
+                { id : "000016", photo : "img/gop/uploads/graphic2.jpeg", cat : "graphic" },
+                { id : "000006", photo : "img/gop/uploads/wedding3.jpg", cat : "wedding" },
+                { id : "000007", photo : "img/gop/uploads/scenery3.jpg", cat : "scenery" },
+                { id : "000008", photo : "img/gop/uploads/auto3.jpg", cat : "auto" },
+                { id : "000017", photo : "img/gop/uploads/graphic3.jpg", cat : "graphic" },
+                { id : "000009", photo : "img/gop/uploads/wedding4.jpg", cat : "wedding" },
+                { id : "000010", photo : "img/gop/uploads/scenery4.jpg", cat : "scenery" },
+                { id : "000011", photo : "img/gop/uploads/auto4.jpg", cat : "auto" },
+                { id : "000018", photo : "img/gop/uploads/graphic4.jpg", cat : "graphic" },
+                { id : "000012", photo : "img/gop/uploads/wedding5.jpg", cat : "wedding" },
+                { id : "000013", photo : "img/gop/uploads/auto5.jpg", cat : "auto" },
+                { id : "000019", photo : "img/gop/uploads/graphic5.jpg", cat : "graphic" },
+                { id : "000014", photo : "img/gop/uploads/auto6.jpg", cat : "auto" },
+                { id : "000020", photo : "img/gop/uploads/graphic6.jpg", cat : "graphic" }
             ],
             photos : []
         }
@@ -75,13 +79,10 @@ app.controller("myCtrl", function ($scope, $http) {
             });
             $scope.site.portfolio.photos = newList;
         }
-        
-
     };
-
-    $scope.test = "Hi, Julie";
 
 
     /********** DRIVER **********/
 
-});
+
+}]);

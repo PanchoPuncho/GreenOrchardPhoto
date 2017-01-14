@@ -2,7 +2,7 @@
 
 ToDo:
 	- Book me now page/Build your own package page
-	- Easier way to post pictures
+	- Admin page - Easier way to post pictures
 	- Pay now (PayPal?)
 
 Done:
@@ -36,6 +36,33 @@ Time Spent:
 	01/10/17 -   2 hours
 	01/11/17 - 	 2 hours
 	01/12/17 - 	 4 hours
+
+
+
+
+
+Security GroupsList of DB Security Groups associated with this DB Instance.	
+awseb-e-3qqvz6j3qs-stack-awsebrdsdbsecuritygroup-bgqxph9v1gd5 ( active )
+
+Security GroupsList of VPC Security Groups associated with this DB Instance.	
+rds-awseb-e-3qqvz6j3qs-stack-awsebrdsdbsecuritygroup-bgqxph9v1gd5-hd7h (sg-cb8dc3b6)
+ ( active )
+
+----------------
+
+Security GroupsList of DB Security Groups associated with this DB Instance.	
+awseb-e-bfd2kzq5jx-stack-awsebrdsdbsecuritygroup-1nscnc5a8dpbf ( active )
+
+Security GroupsList of VPC Security Groups associated with this DB Instance.	
+rds-awseb-e-bfd2kzq5jx-stack-awsebrdsdbsecuritygroup-1nscnc5a8dpbf-rvel (sg-25dc2b59)
+ ( active )
+
+
+
+
+
+
+
 
 
 
