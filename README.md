@@ -1,11 +1,6 @@
 # GreenOrchardPhoto
 
 ToDo:
-	- Admin page
-		- Add picture section
-		- Delete picture section
-			- delete file from server
-			- no sign in afterwards
 	- Book me now page/Build your own package page
 	- Pay now (PayPal?)
 
@@ -29,6 +24,9 @@ Done:
 		- Login
 		- Check and react to status
 		- Logout
+	- Admin page
+		- Add picture section (to DB and server)
+		- Delete picture section (from DB and server)
 
 For Rafa:
 - Itemized pricing
