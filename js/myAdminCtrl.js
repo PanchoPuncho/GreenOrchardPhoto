@@ -75,7 +75,6 @@ app.controller( "myAdminCtrl", ['$scope', '$window', '$timeout', '$http', functi
         $scope.photos = [];
         
         $scope.data = {
-            id      : "",
             photo   : "",
             cat     : ""
         };
@@ -99,21 +98,26 @@ app.controller( "myAdminCtrl", ['$scope', '$window', '$timeout', '$http', functi
         $http.get( $scope.url ).then(function (response) {
             $scope.site.portfolio.allPhotos = response.data.photos;
             $scope.site.portfolio.photos = $scope.site.portfolio.allPhotos;
-            $scope.calculateNewID();
         });
     };
 
     /**
      *
      **/
-    $scope.addPhoto = function ( id, photo, cat ) {
-        console.log( "addPhoto( " + id + ", " + photo + ", " + cat + " )" );
-
-        $scope.url = "/php/addPhoto.php?id=" + id + "&photo=img/gop/uploads/" + photo + "&cat=" + cat;
+    $scope.addPhoto = function ( photo, cat ) {
+        console.log( "addPhoto( " + photo + ", " + cat + " )" );
+        var uniqueID = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+            return v.toString(16);
+        });
+        $scope.url = "/php/addPhoto.php?id=" + uniqueID + "&photo=img/gop/uploads/" + photo + "&cat=" + cat;
         console.log( "POST: " + $scope.url );
-        $http.post( $scope.url ).then(function (response) {
+        $http.post( $scope.url ).success( function( response, status ) {
             console.log( $scope.url + " result: " + JSON.stringify( response, undefined, 2 ) );
             $scope.resetPage();
+        }).error( function( response, status ) {
+            window.alert( "Error data: " + JSON.stringify( response, undefined, 2 ) );
+            window.alert( "Error status: " + JSON.stringify( status, undefined, 2 ) );
         });
     };
 
@@ -159,29 +163,6 @@ app.controller( "myAdminCtrl", ['$scope', '$window', '$timeout', '$http', functi
             return false;
         } else {
             return true;
-        }
-    };
-
-    /**
-     * 
-     **/
-    $scope.calculateNewID = function () {
-        console.log("calculateNewID()");
-
-        $scope.data.id = "";
-
-        if ($scope.site.portfolio.allPhotos.length < 10) {
-            $scope.data.id = '00000' + $scope.site.portfolio.allPhotos.length;
-        } else if ($scope.site.portfolio.allPhotos.length < 100) {
-            $scope.data.id = '0000' + $scope.site.portfolio.allPhotos.length;
-        } else if ($scope.site.portfolio.allPhotos.length < 1000) {
-            $scope.data.id = '000' + $scope.site.portfolio.allPhotos.length;
-        } else if ($scope.site.portfolio.allPhotos.length < 10000) {
-            $scope.data.id = '00' + $scope.site.portfolio.allPhotos.length;
-        } else if ($scope.site.portfolio.allPhotos.length < 100000) {
-            $scope.data.id = '0' + $scope.site.portfolio.allPhotos.length;
-        } else {
-            $scope.data.id = $scope.site.portfolio.allPhotos.length;
         }
     };
 

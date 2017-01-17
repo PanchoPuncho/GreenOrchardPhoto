@@ -18,7 +18,7 @@ CREATE TABLE Admin (
     PRIMARY KEY (id)
 );
 CREATE TABLE Picture (
-    id          char(6)     NOT NULL,
+    id          char(36)     NOT NULL,
     photo       varchar(64) NOT NULL,
     cat         varchar(10) NOT NULL,
     ts          TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -27,27 +27,27 @@ CREATE TABLE Picture (
 
 -- Insert data
 INSERT INTO Admin VALUE ('000000', 'user', 'pass');
-INSERT INTO Picture VALUES ('000000', 'img/gop/uploads/wedding1.jpg', 'WEDD', (SELECT now()));
-INSERT INTO Picture VALUES ('000001', 'img/gop/uploads/scenery1.jpg', 'SCEN', (SELECT now()));
-INSERT INTO Picture VALUES ('000002', 'img/gop/uploads/auto1.jpg', 'AUTO', (SELECT now()));
-INSERT INTO Picture VALUES ('000015', 'img/gop/uploads/graphic1.jpg', 'GRPH', (SELECT now()));
-INSERT INTO Picture VALUES ('000003', 'img/gop/uploads/wedding2.jpg', 'WEDD', (SELECT now()));
-INSERT INTO Picture VALUES ('000004', 'img/gop/uploads/scenery2.jpg', 'SCEN', (SELECT now()));
-INSERT INTO Picture VALUES ('000005', 'img/gop/uploads/auto2.jpg', 'AUTO', (SELECT now()));
-INSERT INTO Picture VALUES ('000016', 'img/gop/uploads/graphic2.jpeg', 'GRPH', (SELECT now()));
-INSERT INTO Picture VALUES ('000006', 'img/gop/uploads/wedding3.jpg', 'WEDD', (SELECT now()));
-INSERT INTO Picture VALUES ('000007', 'img/gop/uploads/scenery3.jpg', 'SCEN', (SELECT now()));
-INSERT INTO Picture VALUES ('000008', 'img/gop/uploads/auto3.jpg', 'AUTO', (SELECT now()));
-INSERT INTO Picture VALUES ('000017', 'img/gop/uploads/graphic3.jpg', 'GRPH', (SELECT now()));
-INSERT INTO Picture VALUES ('000009', 'img/gop/uploads/wedding4.jpg', 'WEDD', (SELECT now()));
-INSERT INTO Picture VALUES ('000010', 'img/gop/uploads/scenery4.jpg', 'SCEN', (SELECT now()));
-INSERT INTO Picture VALUES ('000011', 'img/gop/uploads/auto4.jpg', 'AUTO', (SELECT now()));
-INSERT INTO Picture VALUES ('000018', 'img/gop/uploads/graphic4.jpg', 'GRPH', (SELECT now()));
-INSERT INTO Picture VALUES ('000012', 'img/gop/uploads/wedding5.jpg', 'WEDD', (SELECT now()));
-INSERT INTO Picture VALUES ('000013', 'img/gop/uploads/auto5.jpg', 'AUTO', (SELECT now()));
-INSERT INTO Picture VALUES ('000019', 'img/gop/uploads/graphic5.jpg', 'GRPH', (SELECT now()));
-INSERT INTO Picture VALUES ('000014', 'img/gop/uploads/auto6.jpg', 'AUTO', (SELECT now()));
-INSERT INTO Picture VALUES ('000020', 'img/gop/uploads/graphic6.jpg', 'GRPH', (SELECT now()));
+INSERT INTO Picture VALUES ('acaa4db6-cc78-4a8e-a727-dbb73516b2aa', 'img/gop/uploads/wedding1.jpg', 'WEDD', (SELECT now()));
+INSERT INTO Picture VALUES ('acaa4db6-cc78-4a8e-a727-dbb73516b2ab', 'img/gop/uploads/scenery1.jpg', 'SCEN', (SELECT now()));
+INSERT INTO Picture VALUES ('acaa4db6-cc78-4a8e-a727-dbb73516b2ac', 'img/gop/uploads/auto1.jpg', 'AUTO', (SELECT now()));
+INSERT INTO Picture VALUES ('acaa4db6-cc78-4a8e-a727-dbb73516b2ad', 'img/gop/uploads/graphic1.jpg', 'GRPH', (SELECT now()));
+INSERT INTO Picture VALUES ('acaa4db6-cc78-4a8e-a727-dbb73516b2ae', 'img/gop/uploads/wedding2.jpg', 'WEDD', (SELECT now()));
+INSERT INTO Picture VALUES ('acaa4db6-cc78-4a8e-a727-dbb73516b2af', 'img/gop/uploads/scenery2.jpg', 'SCEN', (SELECT now()));
+INSERT INTO Picture VALUES ('acaa4db6-cc78-4a8e-a727-dbb73516b2ag', 'img/gop/uploads/auto2.jpg', 'AUTO', (SELECT now()));
+INSERT INTO Picture VALUES ('acaa4db6-cc78-4a8e-a727-dbb73516b2ah', 'img/gop/uploads/graphic2.jpeg', 'GRPH', (SELECT now()));
+INSERT INTO Picture VALUES ('acaa4db6-cc78-4a8e-a727-dbb73516b2ai', 'img/gop/uploads/wedding3.jpg', 'WEDD', (SELECT now()));
+INSERT INTO Picture VALUES ('acaa4db6-cc78-4a8e-a727-dbb73516b2aj', 'img/gop/uploads/scenery3.jpg', 'SCEN', (SELECT now()));
+INSERT INTO Picture VALUES ('acaa4db6-cc78-4a8e-a727-dbb73516b2ak', 'img/gop/uploads/auto3.jpg', 'AUTO', (SELECT now()));
+INSERT INTO Picture VALUES ('acaa4db6-cc78-4a8e-a727-dbb73516b2al', 'img/gop/uploads/graphic3.jpg', 'GRPH', (SELECT now()));
+INSERT INTO Picture VALUES ('acaa4db6-cc78-4a8e-a727-dbb73516b2am', 'img/gop/uploads/wedding4.jpg', 'WEDD', (SELECT now()));
+INSERT INTO Picture VALUES ('acaa4db6-cc78-4a8e-a727-dbb73516b2an', 'img/gop/uploads/scenery4.jpg', 'SCEN', (SELECT now()));
+INSERT INTO Picture VALUES ('acaa4db6-cc78-4a8e-a727-dbb73516b2ao', 'img/gop/uploads/auto4.jpg', 'AUTO', (SELECT now()));
+INSERT INTO Picture VALUES ('acaa4db6-cc78-4a8e-a727-dbb73516b2ap', 'img/gop/uploads/graphic4.jpg', 'GRPH', (SELECT now()));
+INSERT INTO Picture VALUES ('acaa4db6-cc78-4a8e-a727-dbb73516b2aq', 'img/gop/uploads/wedding5.jpg', 'WEDD', (SELECT now()));
+INSERT INTO Picture VALUES ('acaa4db6-cc78-4a8e-a727-dbb73516b2ar', 'img/gop/uploads/auto5.jpg', 'AUTO', (SELECT now()));
+INSERT INTO Picture VALUES ('acaa4db6-cc78-4a8e-a727-dbb73516b2as', 'img/gop/uploads/graphic5.jpg', 'GRPH', (SELECT now()));
+INSERT INTO Picture VALUES ('acaa4db6-cc78-4a8e-a727-dbb73516b2at', 'img/gop/uploads/auto6.jpg', 'AUTO', (SELECT now()));
+INSERT INTO Picture VALUES ('acaa4db6-cc78-4a8e-a727-dbb73516b2au', 'img/gop/uploads/graphic6.jpg', 'GRPH', (SELECT now()));
 
 
 
