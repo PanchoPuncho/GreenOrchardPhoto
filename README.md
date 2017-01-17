@@ -1,8 +1,12 @@
 # GreenOrchardPhoto
 
 ToDo:
+	- Admin page
+		- Add picture section
+		- Delete picture section
+			- delete file from server
+			- no sign in afterwards
 	- Book me now page/Build your own package page
-	- Admin page - Easier way to post pictures
 	- Pay now (PayPal?)
 
 Done:

@@ -23,7 +23,7 @@
         $cat = "\"".$_GET['cat']."\"";
     }
 
-    $sql = "INSERT INTO Picture VALUES (".$id.", ".$photo.", ".$cat.", 0, (select now()))";
+    $sql = "INSERT INTO Picture VALUES (".$id.", ".$photo.", ".$cat.", (select now()))";
 
     if ( mysqli_query( $con, $sql ) === TRUE ) {
         echo "{ \"message\":\"New record created successfully\" }";

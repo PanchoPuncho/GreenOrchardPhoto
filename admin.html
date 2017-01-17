@@ -81,7 +81,7 @@
 		<div class="container wow fadeIn">
 		  	<div class="row">
 				<div class="col-lg-12 text-center">
-			  		<h2>Add Image To Gallery :{{data.photo}}:{{data.cat}}:</h2>
+			  		<h2>Add Image To Gallery</h2>
 			  		<hr class="colored">
 			  		<p>Please select the image to upload and its cat.</p>
 				</div>
@@ -117,7 +117,7 @@
 						<br>
 						<div class="row text-center">
 					  		<div class="form-group col-xs-12">
-								<button type="submit" class="btn btn-outline-dark" ng-disabled="disabled" ng-click="addPhoto()">Add Image</button>
+								<button type="submit" name="submit" class="btn btn-outline-dark" ng-disabled="disabled" ng-click="addPhoto( data.id, data.photo, data.cat )">Add Image</button>
 				  			</div>
 						</div>
 			  		</form>
@@ -160,7 +160,7 @@
 				  	<div id="portfoliolist">
 					  	<div ng-repeat="x in site.portfolio.photos" class="mix" href="{{x.photo}}" title="Client Name">
 						  	<div style="background-color:#5CB85C;">
-						  		<button ng-click="deletePhoto( x.id )" class="delete">&times;</button>
+						  		<button ng-click="deletePhoto( x.id, x.photo )" class="delete">&times;</button>
 						  	</div>
 						  	<div class="portfolio-wrapper">
 							  	<img class="img-responsive" src="{{x.photo}}" type="button" data-toggle="modal" data-target="#{{x.id}}" alt="{{x.photo}}">

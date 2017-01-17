@@ -6,13 +6,14 @@ app.controller( "myAdminCtrl", ['$scope', '$window', '$timeout', '$http', functi
     $scope.modalMessage = null;
     $scope.adminUser = "Admin";
     $scope.blur = "-webkit-filter:blur(10px);-moz-filter:blur(10px);-o-filter:blur(10px);-ms-filter:blur(10px);filter:blur(10px);";
+    $scope.url = "";
 
     $scope.login = function ( user, pass ) {
         console.log( "Checking admin credentials..." );
-        $http.get( "/php/adminExists.php?user=" + user + "&pass=" + pass ).then( function ( response ) {
-            console.log( "User: " + JSON.stringify( response, undefined, 2 ) );
+        $scope.url = "/php/adminExists.php?user=" + user + "&pass=" + pass;
+        console.log( "GET: " + $scope.url );
+        $http.get( $scope.url ).then( function ( response ) {
             if ( response.data.numAdmins === "1" ) {
-                console.log( "Logged into super_secret as " + user );
                 $scope.blur = "";
                 $scope.disabled = "true";
 
@@ -64,10 +65,9 @@ app.controller( "myAdminCtrl", ['$scope', '$window', '$timeout', '$http', functi
 
                     $scope.photos = [];
                     
-                    $scope.data.value = {
-                        id      : null,
-                        name    : null,
-                        cat     : null
+                    $scope.data = {
+                        photo   : "",
+                        cat     : ""
                     };
 
                     $scope.site = {
@@ -84,25 +84,40 @@ app.controller( "myAdminCtrl", ['$scope', '$window', '$timeout', '$http', functi
 
                     document.getElementById( "fileToUpload" ).value = "";
 
-                    $http.get( "/php/getPhotos.php" ).then(function (response) {
-                        console.log( "Photos: " + JSON.stringify( response, undefined, 2 ) );
+                    $scope.url = "/php/getPhotos.php";
+                    console.log( "GET: " + $scope.url );
+                    $http.get( $scope.url ).then(function (response) {
                         $scope.site.portfolio.allPhotos = response.data.photos;
                         $scope.site.portfolio.photos = $scope.site.portfolio.allPhotos;
+                        $scope.calculateNewID();
                     });
                 };
 
-                $scope.addPhoto = function () {
-                    $scope.calculateNewID();
-                    console.log( "addPhoto: " + JSON.stringify( $scope.data, undefined, 2 ) );
-                    $http.post( "/php/addPhoto.php?id=" + $scope.data.id + "&photo=" + $scope.data.photo + "&cat=" + $scope.data.cat ).then(function (response) {
-                        console.log( "Photos: " + JSON.stringify( response, undefined, 2 ) );
-                        $scope.site.portfolio.allPhotos = response.data.photos;
-                        $scope.site.portfolio.photos = $scope.site.portfolio.allPhotos;
+                $scope.addPhoto = function ( id, photo, cat ) {
+                    console.log( "addPhoto( " + id + ", " + photo + ", " + cat + " )" );
+
+                    $scope.url = "/php/addPhoto.php?id=" + id + "&photo=img/gop/uploads/" + photo + "&cat=" + cat;
+                    console.log( "POST: " + $scope.url );
+                    $http.post( $scope.url ).then(function (response) {
+                        console.log( $scope.url + " result: " + JSON.stringify( response, undefined, 2 ) );
                     });
                 };
 
-                $scope.deletePhoto = function ( id ) {
+                $scope.deletePhoto = function ( id, photo ) {
                     console.log( "deletePhoto( " + id + " )" );
+
+                    $scope.url = "/php/deletePhotoFromDB.php?id=" + id;
+                    console.log( "POST: " + $scope.url );
+                    $http.post( $scope.url ).then(function (response) {
+                        console.log( $scope.url + " result: " + JSON.stringify( response, undefined, 2 ) );
+                        
+                        $scope.url = "/php/deleteImage.php?file=" + photo;
+                        console.log( "POST: " + $scope.url );
+                        $http.post( $scope.url ).then(function (response) {
+                            console.log( $scope.url + " result: " + JSON.stringify( response, undefined, 2 ) );
+                            $window.location.reload();
+                        });
+                    });
                 };
 
                 $scope.check = function() {
@@ -128,7 +143,7 @@ app.controller( "myAdminCtrl", ['$scope', '$window', '$timeout', '$http', functi
                  * 
                  **/
                 $scope.calculateNewID = function () {
-                    console.log("Calculating new id...");
+                    console.log("calculateNewID()");
 
                     $scope.data.id = "";
 
@@ -154,7 +169,7 @@ app.controller( "myAdminCtrl", ['$scope', '$window', '$timeout', '$http', functi
 
                 $scope.resetPage();
             } else {
-                $scope.modalMessage = "Invalid credentials!";
+                $scope.modalMessage = "Invalid credentials! Redirecting...";
                 $timeout( function() {
                     $window.location.href = '/index.html';
                 }, 3000);
