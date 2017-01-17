@@ -45,13 +45,13 @@ app.controller( "myAdminCtrl", ['$scope', '$window', '$timeout', '$http', functi
             $scope.site.portfolio.photos = $scope.site.portfolio.allPhotos;
         } else {
 
-            if ( cat === "wedding" ) {
+            if ( cat === "WEDD" ) {
                 $scope.site.weddingActive = "active";
-            } else if ( cat === "scenery" ) {
+            } else if ( cat === "SCEN" ) {
                 $scope.site.sceneryActive = "active";
-            } else if ( cat === "auto" ) {
+            } else if ( cat === "AUTO" ) {
                 $scope.site.autoActive = "active";
-            } else if ( cat === "graphic" ) {
+            } else if ( cat === "GRPH" ) {
                 $scope.site.graphicActive = "active";
             }
             var newList = [];
@@ -113,6 +113,7 @@ app.controller( "myAdminCtrl", ['$scope', '$window', '$timeout', '$http', functi
         console.log( "POST: " + $scope.url );
         $http.post( $scope.url ).then(function (response) {
             console.log( $scope.url + " result: " + JSON.stringify( response, undefined, 2 ) );
+            $scope.resetPage();
         });
     };
 

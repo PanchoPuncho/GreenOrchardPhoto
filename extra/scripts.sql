@@ -27,27 +27,27 @@ CREATE TABLE Picture (
 
 -- Insert data
 INSERT INTO Admin VALUE ('000000', 'user', 'pass');
-INSERT INTO Picture VALUES ('000000', 'img/gop/uploads/wedding1.jpg', 'wedding', (SELECT now()));
-INSERT INTO Picture VALUES ('000001', 'img/gop/uploads/scenery1.jpg', 'scenery', (SELECT now()));
-INSERT INTO Picture VALUES ('000002', 'img/gop/uploads/auto1.jpg', 'auto', (SELECT now()));
-INSERT INTO Picture VALUES ('000015', 'img/gop/uploads/graphic1.jpg', 'graphic', (SELECT now()));
-INSERT INTO Picture VALUES ('000003', 'img/gop/uploads/wedding2.jpg', 'wedding', (SELECT now()));
-INSERT INTO Picture VALUES ('000004', 'img/gop/uploads/scenery2.jpg', 'scenery', (SELECT now()));
-INSERT INTO Picture VALUES ('000005', 'img/gop/uploads/auto2.jpg', 'auto', (SELECT now()));
-INSERT INTO Picture VALUES ('000016', 'img/gop/uploads/graphic2.jpeg', 'graphic', (SELECT now()));
-INSERT INTO Picture VALUES ('000006', 'img/gop/uploads/wedding3.jpg', 'wedding', (SELECT now()));
-INSERT INTO Picture VALUES ('000007', 'img/gop/uploads/scenery3.jpg', 'scenery', (SELECT now()));
-INSERT INTO Picture VALUES ('000008', 'img/gop/uploads/auto3.jpg', 'auto', (SELECT now()));
-INSERT INTO Picture VALUES ('000017', 'img/gop/uploads/graphic3.jpg', 'graphic', (SELECT now()));
-INSERT INTO Picture VALUES ('000009', 'img/gop/uploads/wedding4.jpg', 'wedding', (SELECT now()));
-INSERT INTO Picture VALUES ('000010', 'img/gop/uploads/scenery4.jpg', 'scenery', (SELECT now()));
-INSERT INTO Picture VALUES ('000011', 'img/gop/uploads/auto4.jpg', 'auto', (SELECT now()));
-INSERT INTO Picture VALUES ('000018', 'img/gop/uploads/graphic4.jpg', 'graphic', (SELECT now()));
-INSERT INTO Picture VALUES ('000012', 'img/gop/uploads/wedding5.jpg', 'wedding', (SELECT now()));
-INSERT INTO Picture VALUES ('000013', 'img/gop/uploads/auto5.jpg', 'auto', (SELECT now()));
-INSERT INTO Picture VALUES ('000019', 'img/gop/uploads/graphic5.jpg', 'graphic', (SELECT now()));
-INSERT INTO Picture VALUES ('000014', 'img/gop/uploads/auto6.jpg', 'auto', (SELECT now()));
-INSERT INTO Picture VALUES ('000020', 'img/gop/uploads/graphic6.jpg', 'graphic', (SELECT now()));
+INSERT INTO Picture VALUES ('000000', 'img/gop/uploads/wedding1.jpg', 'WEDD', (SELECT now()));
+INSERT INTO Picture VALUES ('000001', 'img/gop/uploads/scenery1.jpg', 'SCEN', (SELECT now()));
+INSERT INTO Picture VALUES ('000002', 'img/gop/uploads/auto1.jpg', 'AUTO', (SELECT now()));
+INSERT INTO Picture VALUES ('000015', 'img/gop/uploads/graphic1.jpg', 'GRPH', (SELECT now()));
+INSERT INTO Picture VALUES ('000003', 'img/gop/uploads/wedding2.jpg', 'WEDD', (SELECT now()));
+INSERT INTO Picture VALUES ('000004', 'img/gop/uploads/scenery2.jpg', 'SCEN', (SELECT now()));
+INSERT INTO Picture VALUES ('000005', 'img/gop/uploads/auto2.jpg', 'AUTO', (SELECT now()));
+INSERT INTO Picture VALUES ('000016', 'img/gop/uploads/graphic2.jpeg', 'GRPH', (SELECT now()));
+INSERT INTO Picture VALUES ('000006', 'img/gop/uploads/wedding3.jpg', 'WEDD', (SELECT now()));
+INSERT INTO Picture VALUES ('000007', 'img/gop/uploads/scenery3.jpg', 'SCEN', (SELECT now()));
+INSERT INTO Picture VALUES ('000008', 'img/gop/uploads/auto3.jpg', 'AUTO', (SELECT now()));
+INSERT INTO Picture VALUES ('000017', 'img/gop/uploads/graphic3.jpg', 'GRPH', (SELECT now()));
+INSERT INTO Picture VALUES ('000009', 'img/gop/uploads/wedding4.jpg', 'WEDD', (SELECT now()));
+INSERT INTO Picture VALUES ('000010', 'img/gop/uploads/scenery4.jpg', 'SCEN', (SELECT now()));
+INSERT INTO Picture VALUES ('000011', 'img/gop/uploads/auto4.jpg', 'AUTO', (SELECT now()));
+INSERT INTO Picture VALUES ('000018', 'img/gop/uploads/graphic4.jpg', 'GRPH', (SELECT now()));
+INSERT INTO Picture VALUES ('000012', 'img/gop/uploads/wedding5.jpg', 'WEDD', (SELECT now()));
+INSERT INTO Picture VALUES ('000013', 'img/gop/uploads/auto5.jpg', 'AUTO', (SELECT now()));
+INSERT INTO Picture VALUES ('000019', 'img/gop/uploads/graphic5.jpg', 'GRPH', (SELECT now()));
+INSERT INTO Picture VALUES ('000014', 'img/gop/uploads/auto6.jpg', 'AUTO', (SELECT now()));
+INSERT INTO Picture VALUES ('000020', 'img/gop/uploads/graphic6.jpg', 'GRPH', (SELECT now()));
 
 
 

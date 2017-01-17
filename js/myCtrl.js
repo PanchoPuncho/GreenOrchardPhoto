@@ -1,4 +1,4 @@
-app.controller("myCtrl", ['$scope', '$window', function ($scope, $window) {
+app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $window, $http) {
     /********** GLOBAL VARIABLES **********/
 
 
@@ -21,34 +21,13 @@ app.controller("myCtrl", ['$scope', '$window', function ($scope, $window) {
         autoActive : "",
         graphicActive : "",
         portfolio : {
-            allPhotos : [
-                { id : "000000", photo : "img/gop/uploads/wedding1.jpg", cat : "wedding" },
-                { id : "000001", photo : "img/gop/uploads/scenery1.jpg", cat : "scenery" },
-                { id : "000002", photo : "img/gop/uploads/auto1.jpg", cat : "auto" },
-                { id : "000015", photo : "img/gop/uploads/graphic1.jpg", cat : "graphic" },
-                { id : "000003", photo : "img/gop/uploads/wedding2.jpg", cat : "wedding" },
-                { id : "000004", photo : "img/gop/uploads/scenery2.jpg", cat : "scenery" },
-                { id : "000005", photo : "img/gop/uploads/auto2.jpg", cat : "auto" },
-                { id : "000016", photo : "img/gop/uploads/graphic2.jpeg", cat : "graphic" },
-                { id : "000006", photo : "img/gop/uploads/wedding3.jpg", cat : "wedding" },
-                { id : "000007", photo : "img/gop/uploads/scenery3.jpg", cat : "scenery" },
-                { id : "000008", photo : "img/gop/uploads/auto3.jpg", cat : "auto" },
-                { id : "000017", photo : "img/gop/uploads/graphic3.jpg", cat : "graphic" },
-                { id : "000009", photo : "img/gop/uploads/wedding4.jpg", cat : "wedding" },
-                { id : "000010", photo : "img/gop/uploads/scenery4.jpg", cat : "scenery" },
-                { id : "000011", photo : "img/gop/uploads/auto4.jpg", cat : "auto" },
-                { id : "000018", photo : "img/gop/uploads/graphic4.jpg", cat : "graphic" },
-                { id : "000012", photo : "img/gop/uploads/wedding5.jpg", cat : "wedding" },
-                { id : "000013", photo : "img/gop/uploads/auto5.jpg", cat : "auto" },
-                { id : "000019", photo : "img/gop/uploads/graphic5.jpg", cat : "graphic" },
-                { id : "000014", photo : "img/gop/uploads/auto6.jpg", cat : "auto" },
-                { id : "000020", photo : "img/gop/uploads/graphic6.jpg", cat : "graphic" }
-            ],
-            photos : []
+            
         }
     };
-    $scope.site.portfolio.photos = $scope.site.portfolio.allPhotos;
 
+    /**
+     *
+     **/
     $scope.filterPortfolioPhotos = function( cat ) {
         console.log( "filterPortfolioPhotos( " + cat + " )" );
         $scope.site.allActive = "";
@@ -62,13 +41,13 @@ app.controller("myCtrl", ['$scope', '$window', function ($scope, $window) {
             $scope.site.portfolio.photos = $scope.site.portfolio.allPhotos;
         } else {
 
-            if ( cat === "wedding" ) {
+            if ( cat === "WEDD" ) {
                 $scope.site.weddingActive = "active";
-            } else if ( cat === "scenery" ) {
+            } else if ( cat === "SCEN" ) {
                 $scope.site.sceneryActive = "active";
-            } else if ( cat === "auto" ) {
+            } else if ( cat === "AUTO" ) {
                 $scope.site.autoActive = "active";
-            } else if ( cat === "graphic" ) {
+            } else if ( cat === "GRPH" ) {
                 $scope.site.graphicActive = "active";
             }
             var newList = [];
@@ -84,5 +63,11 @@ app.controller("myCtrl", ['$scope', '$window', function ($scope, $window) {
 
     /********** DRIVER **********/
 
-
+    $scope.url = "/php/getPhotos.php";
+    console.log( "GET: " + $scope.url );
+    $http.get( $scope.url ).then(function (response) {
+        console.log( JSON.stringify( response, undefined, 2));
+        $scope.site.portfolio.allPhotos = response.data.photos;
+        $scope.site.portfolio.photos = $scope.site.portfolio.allPhotos;
+    });
 }]);
