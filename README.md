@@ -2,6 +2,8 @@
 
 ToDo:
 	- Book me now page/Build your own package page
+		# photoshoot
+		- wedding
 	- Pay now (PayPal?)
 
 Done:
@@ -28,9 +30,6 @@ Done:
 		- Add picture section (to DB and server)
 		- Delete picture section (from DB and server)
 
-For Rafa:
-- Itemized pricing
-
 
 Time Spent:
 	01/08/17 -  10 hours
@@ -38,8 +37,8 @@ Time Spent:
 	01/10/17 -   2 hours
 	01/11/17 - 	 2 hours
 	01/12/17 - 	 4 hours
-
-
+	01/13-8/17 - 5 hours
+	01/19/17 -	4 hours
 
 
 

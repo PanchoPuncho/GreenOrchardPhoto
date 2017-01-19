@@ -860,7 +860,7 @@ aside.cta-quote span.quote {
   cursor: pointer;
 }
 .portfolio-modal .close-modal:hover {
-  opacity: 0.3;
+  opacity: 0.9;
 }
 .portfolio-modal .close-modal .lr {
   height: 75px;
