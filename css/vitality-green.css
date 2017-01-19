@@ -1099,7 +1099,6 @@ aside.cta-quote span.quote {
   position: relative;
   margin-bottom: 0;
   padding-bottom: 0.5em;
-  border-bottom: 1px solid #e1e1e1;
 }
 .floating-label-form-group input,
 .floating-label-form-group textarea {
@@ -1113,6 +1112,7 @@ aside.cta-quote span.quote {
   background: none;
   box-shadow: none !important;
   resize: none;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 .floating-label-form-group label {
   display: block;

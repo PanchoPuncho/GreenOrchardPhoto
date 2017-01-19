@@ -121,13 +121,13 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
             $scope.site.packageForm.numPhotos = "25";
             $scope.site.packageForm.price = "125";
         } else if ( package === "couples" ) {
-            $scope.site.packageForm.subtitle = "- Couples Package! Save 5%";
+            $scope.site.packageForm.subtitle = "- Couples Package! Save 8%";
             $scope.site.packageForm.numPeople = "2";
             $scope.site.packageForm.hours = "1";
             $scope.site.packageForm.numPhotos = "30";
             $scope.site.packageForm.price = "175";
         } else if ( package === "family" ) {
-            $scope.site.packageForm.subtitle = "- Family Package! Save 5%";
+            $scope.site.packageForm.subtitle = "- Family Package! Save 9%";
             $scope.site.packageForm.numPeople = "3";
             $scope.site.packageForm.hours = "1";
             $scope.site.packageForm.numPhotos = "35";
