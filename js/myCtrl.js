@@ -20,15 +20,29 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
         graphicActive   : "",
         sceneryActive   : "",
         weddingActive   : "",
-        portfolio       : {
+        portfolio : {
             
         },
-        packageForm     : {
-            subtitle    : "",
-            numPeople   : "",
-            hours       : "",
-            numPhotos   : "",
-            price       : 0.00
+        form : {
+            photoshoot : {
+                subtitle    : "",
+                numPeople   : "",
+                hours       : "",
+                numPhotos   : "",
+                price       : 0.00
+            },
+            wedding : {
+                subtitle    : "",
+                numHours    : "4",
+                numShooters : "1",
+                numHard     : "0",
+                numSoft     : "0",
+                numLarge    : "0",
+                numSmall    : "0",
+                engSess     : "no",
+                matSess     : "no",
+                price       : 0.00
+            }
         }
     };
 
@@ -77,9 +91,205 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
     /**
      *
      **/
+    $scope.loadPackage = function( package ) {
+        if ( package === "singles" ) {
+            $scope.site.form.photoshoot.subtitle    = "- Singles Package! Save 5%";
+            $scope.site.form.photoshoot.numPeople   = "1";
+            $scope.site.form.photoshoot.hours       = "1";
+            $scope.site.form.photoshoot.numPhotos   = "25";
+            $scope.updatePhotoshootPrice();
+        } else if ( package === "couples" ) {
+            $scope.site.form.photoshoot.subtitle    = "- Couples Package! Save 8%";
+            $scope.site.form.photoshoot.numPeople   = "2";
+            $scope.site.form.photoshoot.hours       = "1";
+            $scope.site.form.photoshoot.numPhotos   = "30";
+            $scope.updatePhotoshootPrice();
+        } else if ( package === "family" ) {
+            $scope.site.form.photoshoot.subtitle    = "- Family Package! Save 9%";
+            $scope.site.form.photoshoot.numPeople   = "3";
+            $scope.site.form.photoshoot.hours       = "1";
+            $scope.site.form.photoshoot.numPhotos   = "35";
+            $scope.updatePhotoshootPrice();
+        } else if ( package === "bronze" ) {
+            $scope.site.form.wedding.subtitle    = "- Bronze Package! Save 15%";
+            $scope.site.form.wedding.numHours    = "6";
+            $scope.site.form.wedding.numShooters = "1";
+            $scope.site.form.wedding.numHard     = "0";
+            $scope.site.form.wedding.numSoft     = "0";
+            $scope.site.form.wedding.numLarge    = "0";
+            $scope.site.form.wedding.numSmall    = "0";
+            $scope.site.form.wedding.engSess     = "yes";
+            $scope.site.form.wedding.matSess     = "no";
+            $scope.updateWeddingPrice();
+        } else if ( package === "silver" ) {
+            $scope.site.form.wedding.subtitle    = "- Silver Package! Save 11%";
+            $scope.site.form.wedding.numHours    = "8";
+            $scope.site.form.wedding.numShooters = "2";
+            $scope.site.form.wedding.numHard     = "1";
+            $scope.site.form.wedding.numSoft     = "0";
+            $scope.site.form.wedding.numLarge    = "0";
+            $scope.site.form.wedding.numSmall    = "1";
+            $scope.site.form.wedding.engSess     = "yes";
+            $scope.site.form.wedding.matSess     = "no";
+            $scope.updateWeddingPrice();
+        } else if ( package === "gold" ) {
+            $scope.site.form.wedding.subtitle    = "- Gold Package! Save 10%";
+            $scope.site.form.wedding.numHours    = "10";
+            $scope.site.form.wedding.numShooters = "2";
+            $scope.site.form.wedding.numHard     = "1";
+            $scope.site.form.wedding.numSoft     = "2";
+            $scope.site.form.wedding.numLarge    = "1";
+            $scope.site.form.wedding.numSmall    = "3";
+            $scope.site.form.wedding.engSess     = "yes";
+            $scope.site.form.wedding.matSess     = "yes";
+            $scope.updateWeddingPrice();
+        } else {
+            window.alert( "ERROR: loadPackage() failed! Contact the developer." );
+        }
+    };
+
+    /********** WEDDING **********/
+
+    /**
+     *
+     **/
+    $scope.bronze = function() {
+        if ( $scope.site.form.wedding.numHours === "6" && $scope.site.form.wedding.numShooters === "1" && $scope.site.form.wedding.numHard === "0" && $scope.site.form.wedding.numSoft === "0" && $scope.site.form.wedding.numLarge === "0" && $scope.site.form.wedding.numSmall === "0" && $scope.site.form.wedding.engSess === "yes" && $scope.site.form.wedding.matSess === "no" ) {
+            $scope.site.form.wedding.subtitle = "- Bronze Package! Save 15%";
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    /**
+     *
+     **/
+    $scope.silver = function() {
+        if ( $scope.site.form.wedding.numHours === "8" && $scope.site.form.wedding.numShooters === "2" && $scope.site.form.wedding.numHard === "1" && $scope.site.form.wedding.numSoft === "0" && $scope.site.form.wedding.numLarge === "0" && $scope.site.form.wedding.numSmall === "1" && $scope.site.form.wedding.engSess === "yes" && $scope.site.form.wedding.matSess === "no" ) {
+            $scope.site.form.wedding.subtitle = "- Silver Package! Save 11%";
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    /**
+     *
+     **/
+    $scope.gold = function() {
+        if ( $scope.site.form.wedding.numHours === "10" && $scope.site.form.wedding.numShooters === "2" && $scope.site.form.wedding.numHard === "1" && $scope.site.form.wedding.numSoft === "2" && $scope.site.form.wedding.numLarge === "1" && $scope.site.form.wedding.numSmall === "3" && $scope.site.form.wedding.engSess === "yes" && $scope.site.form.wedding.matSess === "yes" ) {
+            $scope.site.form.wedding.subtitle = "- Gold Package! Save 10%";
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    /**
+     *
+     **/
+    $scope.updateWeddingPrice = function() {
+        console.log( "updateWeddingPrice()" );
+
+        if ( $scope.bronze() ) {
+            $scope.site.form.wedding.price = 1000;
+        } else if ( $scope.silver() ) {
+            $scope.site.form.wedding.price = 1800;
+        } else if ( $scope.gold() ) {
+            $scope.site.form.wedding.price = 2500;
+        } else {
+            $scope.site.form.wedding.subtitle = "";
+            var eng = $scope.calcEngagementPrice();
+            var mat = $scope.calcMaternityPrice();
+            var hours = $scope.calcWeddingHoursPrice();
+            var pgs = $scope.calcWeddingPhotographerPrice();
+            var hard = $scope.site.form.wedding.numHard;
+            var soft = $scope.site.form.wedding.numSoft;
+            var large = $scope.site.form.wedding.numLarge;
+            var small = $scope.site.form.wedding.numSmall;
+            $scope.site.form.wedding.price = ( hours + pgs + eng + mat + (parseInt(hard) * 210) + (parseInt(soft) * 80) + (parseInt(large) * 60) + (parseInt(small) * 35) );
+        }
+    };
+
+    $scope.calcEngagementPrice = function() {
+        console.log( "calcEngagementPrice( " + $scope.site.form.wedding.engSess + " )" );
+
+        switch ( $scope.site.form.wedding.engSess ) {
+            case "no":
+                return 0;
+            case "yes":
+                return 175;
+            default:
+                window.alert( "ERROR: calcEngagementPrice() failed! Contact the developer." );
+        }
+    };
+
+    $scope.calcMaternityPrice = function() {
+        console.log( "calcMaternityPrice( " + $scope.site.form.wedding.matSess + " )" );
+
+        switch ( $scope.site.form.wedding.matSess ) {
+            case "no":
+                return 0;
+            case "yes":
+                return 175;
+            default:
+                window.alert( "ERROR: calcMaternityPrice() failed! Contact the developer." );
+        }
+    };
+
+    $scope.calcWeddingHoursPrice = function() {
+        console.log( "calcWeddingHoursPrice( " + $scope.site.form.wedding.numHours + " )" );
+
+        switch ( $scope.site.form.wedding.numHours ) {
+            case "4":
+                return 400;
+            case "5":
+                return 500;
+            case "6":
+                return 600;
+            case "7":
+                return 750;
+            case "8":
+                return 900;
+            case "9":
+                return 1050;
+            case "10":
+                return 1200;
+            case "11":
+                return 1350;
+            case "12":
+                return 1500;
+            case "13":
+                return 1650;
+            case "14":
+                return 1800;
+            default:
+                window.alert( "ERROR: calcWeddingHoursPrice() failed! Contact the developer."  );
+        }
+    };
+
+    $scope.calcWeddingPhotographerPrice = function() {
+        console.log( "calcWeddingPhotographerPrice( " + $scope.site.form.wedding.numShooters + " )" );
+
+        switch ( $scope.site.form.wedding.numShooters ) {
+            case "1":
+                return 400;
+            case "2":
+                return 700;
+            default:
+                window.alert( "ERROR: calcWeddingPhotographerPrice() failed! Contact the developer." );
+        }
+    };
+
+    /********** PHOTOSHOOT **********/
+
+    /**
+     *
+     **/
     $scope.singles = function() {
-        if ( $scope.site.packageForm.numPeople === "1" && $scope.site.packageForm.hours === "1" && $scope.site.packageForm.numPhotos === "25" ) {
-            $scope.site.packageForm.subtitle = "- Singles Package! Save 5%";
+        if ( $scope.site.form.photoshoot.numPeople === "1" && $scope.site.form.photoshoot.hours === "1" && $scope.site.form.photoshoot.numPhotos === "25" ) {
+            $scope.site.form.photoshoot.subtitle = "- Singles Package! Save 5%";
             return true;
         } else {
             return false;
@@ -90,8 +300,8 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
      *
      **/
     $scope.couples = function() {
-        if ( $scope.site.packageForm.numPeople === "2" && $scope.site.packageForm.hours === "1" && $scope.site.packageForm.numPhotos === "30" ) {
-            $scope.site.packageForm.subtitle = "- Couples Package! Save 8%";
+        if ( $scope.site.form.photoshoot.numPeople === "2" && $scope.site.form.photoshoot.hours === "1" && $scope.site.form.photoshoot.numPhotos === "30" ) {
+            $scope.site.form.photoshoot.subtitle = "- Couples Package! Save 8%";
             return true;
         } else {
             return false;
@@ -102,8 +312,8 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
      *
      **/
     $scope.family = function() {
-        if ( $scope.site.packageForm.numPeople === "3" && $scope.site.packageForm.hours === "1" && $scope.site.packageForm.numPhotos === "35" ) {
-            $scope.site.packageForm.subtitle = "- Family Package! Save 9%";
+        if ( $scope.site.form.photoshoot.numPeople === "3" && $scope.site.form.photoshoot.hours === "1" && $scope.site.form.photoshoot.numPhotos === "35" ) {
+            $scope.site.form.photoshoot.subtitle = "- Family Package! Save 9%";
             return true;
         } else {
             return false;
@@ -113,55 +323,28 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
     /**
      *
      **/
-    $scope.loadPackage = function( package ) {
-        if ( package === "singles" ) {
-            $scope.site.packageForm.subtitle = "- Singles Package! Save 5%";
-            $scope.site.packageForm.numPeople = "1";
-            $scope.site.packageForm.hours = "1";
-            $scope.site.packageForm.numPhotos = "25";
-            $scope.site.packageForm.price = "125";
-        } else if ( package === "couples" ) {
-            $scope.site.packageForm.subtitle = "- Couples Package! Save 8%";
-            $scope.site.packageForm.numPeople = "2";
-            $scope.site.packageForm.hours = "1";
-            $scope.site.packageForm.numPhotos = "30";
-            $scope.site.packageForm.price = "175";
-        } else if ( package === "family" ) {
-            $scope.site.packageForm.subtitle = "- Family Package! Save 9%";
-            $scope.site.packageForm.numPeople = "3";
-            $scope.site.packageForm.hours = "1";
-            $scope.site.packageForm.numPhotos = "35";
-            $scope.site.packageForm.price = "250";
-        } else {
-            window.alert( "Error: Contact Developer" );
-        }
-    };
-
-    /**
-     *
-     **/
-    $scope.updatePrice = function() {
-        console.log( "updatePrice()" );
+    $scope.updatePhotoshootPrice = function() {
+        console.log( "updatePhotoshootPrice()" );
 
         if ( $scope.singles() ) {
-            $scope.site.packageForm.price = 125;
+            $scope.site.form.photoshoot.price = 125;
         } else if ( $scope.couples() ) {
-            $scope.site.packageForm.price = 175;
+            $scope.site.form.photoshoot.price = 175;
         } else if ( $scope.family() ) {
-            $scope.site.packageForm.price = 250;
+            $scope.site.form.photoshoot.price = 250;
         } else {
-            $scope.site.packageForm.subtitle = "";
-            var people = $scope.calcPeoplePrice();
-            var hours = $scope.calcHoursPrice();
-            var photos = $scope.calcPhotosPrice();
-            $scope.site.packageForm.price = ( people + hours + photos );
+            $scope.site.form.photoshoot.subtitle = "";
+            var people = $scope.calcPhotoshootPeoplePrice();
+            var hours = $scope.calcPhotoshootHoursPrice();
+            var photos = $scope.calcPhotoshootPhotosPrice();
+            $scope.site.form.photoshoot.price = ( people + hours + photos );
         }
     };
 
-    $scope.calcPeoplePrice = function() {
-        console.log( "calcPeoplePrice( " + $scope.site.packageForm.numPeople + " )" );
+    $scope.calcPhotoshootPeoplePrice = function() {
+        console.log( "calcPhotoshootPeoplePrice( " + $scope.site.form.photoshoot.numPeople + " )" );
 
-        switch ( $scope.site.packageForm.numPeople ) {
+        switch ( $scope.site.form.photoshoot.numPeople ) {
             case "1":
                 return 75;
             case "2":
@@ -171,10 +354,10 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
         }
     };
 
-    $scope.calcHoursPrice = function() {
-        console.log( "calcHoursPrice( " + $scope.site.packageForm.hours + " )" );
+    $scope.calcPhotoshootHoursPrice = function() {
+        console.log( "calcPhotoshootHoursPrice( " + $scope.site.form.photoshoot.hours + " )" );
 
-        switch ( $scope.site.packageForm.hours ) {
+        switch ( $scope.site.form.photoshoot.hours ) {
             case "0.5":
                 return 25;
             case "1":
@@ -190,10 +373,10 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
         }
     };
 
-    $scope.calcPhotosPrice = function() {
-        console.log( "calcPhotosPrice( " + $scope.site.packageForm.numPhotos + " )" );
+    $scope.calcPhotoshootPhotosPrice = function() {
+        console.log( "calcPhotoshootPhotosPrice( " + $scope.site.form.photoshoot.numPhotos + " )" );
 
-        switch ( $scope.site.packageForm.numPhotos ) {
+        switch ( $scope.site.form.photoshoot.numPhotos ) {
             case "15":
                 return 0;
             case "20":

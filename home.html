@@ -666,7 +666,7 @@
                                           <li class="list-group-item" style="margin: -10px 0 -10px 0px;">-</li>
                                           <li class="list-group-item" style="margin: -10px 0 -10px 0px;">-</li>
                                       </ul>
-                                      <a href="#" class="btn btn-outline-dark" data-toggle="modal" data-target="#packageModal" ng-click="loadPackage( 'singles' )">View Package</a>
+                                      <a href="#" class="btn btn-outline-dark" data-toggle="modal" data-target="#weddingModal" ng-click="loadPackage( 'bronze' )">View Package</a>
                                   </div>
                               </div>
                               <!-- Pricing Table 2 -->
@@ -686,7 +686,7 @@
                                           <li class="list-group-item" style="margin: -10px 0 -10px 0px;">-</li>
                                           <li class="list-group-item" style="margin: -10px 0 -10px 0px;">-</li>
                                       </ul>
-                                      <a href="#" class="btn btn-outline-dark" data-toggle="modal" data-target="#packageModal" ng-click="loadPackage( 'singles' )">View Package</a>
+                                      <a href="#" class="btn btn-outline-dark" data-toggle="modal" data-target="#weddingModal" ng-click="loadPackage( 'silver' )">View Package</a>
                                   </div>
                               </div>
                               <!-- Pricing Table 3 -->
@@ -706,7 +706,7 @@
                                           <li class="list-group-item" style="margin: -10px 0 -10px 0px;">Three 18x24 Photos</li>
                                           <li class="list-group-item" style="margin: -10px 0 -10px 0px;">Two Paperback Albums</li>
                                       </ul>
-                                      <a href="#" class="btn btn-outline-dark" data-toggle="modal" data-target="#packageModal" ng-click="loadPackage( 'singles' )">View Package</a>
+                                      <a href="#" class="btn btn-outline-dark" data-toggle="modal" data-target="#weddingModal" ng-click="loadPackage( 'gold' )">View Package</a>
                                   </div>
                               </div>
                           </div>
@@ -934,8 +934,8 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content" style="background-image:url( 'img/gop/uploads/wedding2.jpg' ); background-size:auto 100%;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
         <div class="modal-header">
-          <p class="close" style="color:green;opacity:0.75;">${{ site.packageForm.price }}</p>
-          <h4 class="modal-title">Build Your Own Photoshoot <span style="color:green;opacity:0.75;">{{ site.packageForm.subtitle }}</span></h4>
+          <p class="close" style="color:green;opacity:0.75;">${{ site.form.photoshoot.price }}</p>
+          <h4 class="modal-title">Build Your Own Photoshoot <span style="color:green;opacity:0.75;">{{ site.form.photoshoot.subtitle }}</span></h4>
         </div>
         <div class="modal-body">
           <form class="form-horizontal" id="myUpdateForm" role="form">
@@ -945,10 +945,10 @@
                   <div class="form-group">
                     <label class="control-label col-sm-4" for="numPeople" style="text-align: left;"># of People:</label>
                     <div class="col-sm-5">
-                      <input class="form-control" type="range" name="numPeople" id="numPeople" value="{{site.packageForm.numPeople}}" min="1" max="10" step="1" ng-model="site.packageForm.numPeople" ng-change="updatePrice()">
+                      <input class="form-control" type="range" name="numPeople" id="numPeople" value="{{site.form.photoshoot.numPeople}}" min="1" max="10" step="1" ng-model="site.form.photoshoot.numPeople" ng-change="updatePhotoshootPrice()">
                     </div>
                     <div class="col-sm-3">
-                      <input class="form-control" type="input" value="{{site.packageForm.numPeople}}" style="text-align: center;" disabled>
+                      <input class="form-control" type="input" value="{{site.form.photoshoot.numPeople}}" style="text-align: center;" disabled>
                     </div>
                   </div>
                 </div>
@@ -956,10 +956,10 @@
                   <div class="form-group">
                     <label class="control-label col-sm-4" for="hours" style="text-align: left;">Hours:</label>
                     <div class="col-sm-5">
-                      <input class="form-control" type="range" name="hours" id="hours" value="{{site.packageForm.hours}}" min="0.5" max="3" step="0.5" ng-model="site.packageForm.hours" ng-change="updatePrice()">
+                      <input class="form-control" type="range" name="hours" id="hours" value="{{site.form.photoshoot.hours}}" min="0.5" max="3" step="0.5" ng-model="site.form.photoshoot.hours" ng-change="updatePhotoshootPrice()">
                     </div>
                     <div class="col-sm-3">
-                      <input class="form-control" type="input" value="{{site.packageForm.hours}}" style="text-align: center;" disabled>
+                      <input class="form-control" type="input" value="{{site.form.photoshoot.hours}}" style="text-align: center;" disabled>
                     </div>
                   </div>
                 </div>
@@ -969,10 +969,10 @@
                   <div class="form-group">
                     <label class="control-label col-sm-3" for="numPhotos" style="text-align: left;"># of Edited Photos:</label>
                     <div class="col-sm-6">
-                      <input class="form-control" type="range" name="numPhotos" id="numPhotos" value="{{site.packageForm.numPhotos}}" min="15" max="100" step="5" ng-model="site.packageForm.numPhotos" ng-change="updatePrice()">
+                      <input class="form-control" type="range" name="numPhotos" id="numPhotos" value="{{site.form.photoshoot.numPhotos}}" min="15" max="100" step="5" ng-model="site.form.photoshoot.numPhotos" ng-change="updatePhotoshootPrice()">
                     </div>
                     <div class="col-sm-3">
-                      <input class="form-control" type="input" value="{{site.packageForm.numPhotos}}" style="text-align: center;" disabled>
+                      <input class="form-control" type="input" value="{{site.form.photoshoot.numPhotos}}" style="text-align: center;" disabled>
                     </div>
                   </div>
                 </div>
@@ -999,7 +999,144 @@
           </form>
         </div>
         <div class="modal-footer">
-          <p style="position:absolute; color:green; opacity:0.75;"><strong>${{ site.packageForm.price }}</strong></p>
+          <p style="position:absolute; color:green; opacity:0.75;"><strong>${{ site.form.photoshoot.price }}</strong></p>
+          <button type="button" class="btn btn-outline-dark" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Sends an email to GOP and you, the client, with your request and the next steps.">Send Inquiry</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wedding Modal -->
+  <div id="weddingModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content" style="background-image:url( 'img/gop/uploads/wedding2.jpg' ); background-size:auto 100%;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <p class="close" style="color:green;opacity:0.75;">${{ site.form.wedding.price }}</p>
+          <h4 class="modal-title">Build Your Own Wedding <span style="color:green;opacity:0.75;">{{ site.form.wedding.subtitle }}</span></h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" id="myUpdateForm" role="form">
+            <feildset>
+              <div class="form-group">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label col-sm-4" for="numHours" style="text-align: left;"># of Hours:</label>
+                    <div class="col-sm-5">
+                      <input class="form-control" type="range" name="numHours" id="numHours" value="{{site.form.wedding.numHours}}" min="4" max="14" step="1" ng-model="site.form.wedding.numHours" ng-change="updateWeddingPrice()">
+                    </div>
+                    <div class="col-sm-3">
+                      <input class="form-control" type="input" value="{{site.form.wedding.numHours}}" style="text-align: center;" disabled>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label col-sm-4" for="numShooters" style="text-align: left;"># of Photographers:</label>
+                    <div class="col-sm-5">
+                      <input class="form-control" type="range" name="numShooters" id="numShooters" value="{{site.form.wedding.numShooters}}" min="1" max="2" step="1" ng-model="site.form.wedding.numShooters" ng-change="updateWeddingPrice()">
+                    </div>
+                    <div class="col-sm-3">
+                      <input class="form-control" type="input" value="{{site.form.wedding.numShooters}}" style="text-align: center;" disabled>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label col-sm-3" for="numHard" style="text-align: left;"># of Hard Cover Albums (13"x11"):</label>
+                    <div class="col-sm-6">
+                      <input class="form-control" type="range" name="numHard" id="numHard" value="{{site.form.wedding.numHard}}" min="0" max="100" step="1" ng-model="site.form.wedding.numHard" ng-change="updateWeddingPrice()">
+                    </div>
+                    <div class="col-sm-3">
+                      <input class="form-control" type="input" value="{{site.form.wedding.numHard}}" style="text-align: center;" disabled>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label col-sm-3" for="numSoft" style="text-align: left;"># of Soft Cover Albums (7"x7"):</label>
+                    <div class="col-sm-6">
+                      <input class="form-control" type="range" name="numSoft" id="numSoft" value="{{site.form.wedding.numSoft}}" min="0" max="100" step="1" ng-model="site.form.wedding.numSoft" ng-change="updateWeddingPrice()">
+                    </div>
+                    <div class="col-sm-3">
+                      <input class="form-control" type="input" value="{{site.form.wedding.numSoft}}" style="text-align: center;" disabled>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label col-sm-3" for="numLarge" style="text-align: left;"># of Prints (24"x36"):</label>
+                    <div class="col-sm-6">
+                      <input class="form-control" type="range" name="numLarge" id="numLarge" value="{{site.form.wedding.numLarge}}" min="0" max="100" step="1" ng-model="site.form.wedding.numLarge" ng-change="updateWeddingPrice()">
+                    </div>
+                    <div class="col-sm-3">
+                      <input class="form-control" type="input" value="{{site.form.wedding.numLarge}}" style="text-align: center;" disabled>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label col-sm-3" for="numSmall" style="text-align: left;"># of Prints (18"x24"):</label>
+                    <div class="col-sm-6">
+                      <input class="form-control" type="range" name="numSmall" id="numSmall" value="{{site.form.wedding.numSmall}}" min="0" max="100" step="1" ng-model="site.form.wedding.numSmall" ng-change="updateWeddingPrice()">
+                    </div>
+                    <div class="col-sm-3">
+                      <input class="form-control" type="input" value="{{site.form.wedding.numSmall}}" style="text-align: center;" disabled>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label col-sm-6" for="engSess" style="text-align: left;">Engagement Session:</label>
+                    <div class="col-sm-6">
+                      <select class="form-control" name="engSess" id="engSess" value="{{site.form.wedding.engSess}}" ng-model="site.form.wedding.engSess" ng-change="updateWeddingPrice()">
+                        <option value="no">no</option>
+                        <option value="yes">yes</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label col-sm-6" for="matSess" style="text-align: left;">Maternity Session:</label>
+                    <div class="col-sm-6">
+                      <select class="form-control" name="matSess" id="matSess" value="{{site.form.wedding.matSess}}" ng-model="site.form.wedding.matSess" ng-change="updateWeddingPrice()">
+                        <option value="no">no</option>
+                        <option value="yes">yes</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <div class="form-group col-sm-12 floating-label-form-group controls" style="border-top: 1px solid #e1e1e1;border-bottom: 1px solid #e1e1e1;">
+                      <label>Phone Number</label>
+                      <input type="tel" class="form-control" placeholder="Phone Number" id="phone" required data-validation-required-message="Please enter your phone number.">
+                      <p class="help-block text-danger"></p>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <div class="form-group col-sm-12 floating-label-form-group controls">
+                      <label>Message</label>
+                      <textarea rows="2" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                      <p class="help-block text-danger"></p>
+                  </div>
+                </div>
+              </div>
+            </feildset>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <p style="position:absolute; color:green; opacity:0.75;"><strong>${{ site.form.wedding.price }}</strong></p>
           <button type="button" class="btn btn-outline-dark" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Sends an email to GOP and you, the client, with your request and the next steps.">Send Inquiry</button>
         </div>
       </div>
