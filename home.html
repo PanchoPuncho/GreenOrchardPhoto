@@ -731,28 +731,28 @@
               <div class="col-lg-8 col-lg-offset-2">
                   <form name="sentMessage" id="contactForm" novalidate>
                       <div class="row control-group">
-                          <div class="form-group col-xs-12 floating-label-form-group controls" style="border-bottom: 1px solid #e1e1e1;">
+                          <div class="form-group col-lg-12 floating-label-form-group controls" style="border-bottom: 1px solid #e1e1e1;">
                               <label>Name</label>
                               <input type="text" class="form-control" placeholder="Name" id="name" value="{{data.user.name}}" required data-validation-required-message="Please enter your email address.">
                               <p class="help-block text-danger"></p>
                           </div>
                       </div>
                       <div class="row control-group">
-                          <div class="form-group col-xs-12 floating-label-form-group controls" style="border-bottom: 1px solid #e1e1e1;">
+                          <div class="form-group col-lg-12 floating-label-form-group controls" style="border-bottom: 1px solid #e1e1e1;">
                               <label>Email Address</label>
                               <input type="email" class="form-control" placeholder="Email Address" id="email" value="{{data.user.email}}" required data-validation-required-message="Please enter your email address.">
                               <p class="help-block text-danger"></p>
                           </div>
                       </div>
                       <div class="row control-group">
-                          <div class="form-group col-xs-12 floating-label-form-group controls" style="border-bottom: 1px solid #e1e1e1;">
+                          <div class="form-group col-lg-12 floating-label-form-group controls" style="border-bottom: 1px solid #e1e1e1;">
                               <label>Phone Number</label>
                               <input type="tel" class="form-control" placeholder="Phone Number" id="phone" required data-validation-required-message="Please enter your phone number.">
                               <p class="help-block text-danger"></p>
                           </div>
                       </div>
                       <div class="row control-group">
-                          <div class="form-group col-xs-12 floating-label-form-group controls">
+                          <div class="form-group col-lg-12 floating-label-form-group controls">
                               <label>Message</label>
                               <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
                               <p class="help-block text-danger"></p>
@@ -761,7 +761,7 @@
                       <br>
                       <div id="success"></div>
                       <div class="row">
-                          <div class="form-group col-xs-12">
+                          <div class="form-group col-lg-12">
                               <button type="submit" class="btn btn-outline-dark">Send</button>
                           </div>
                       </div>
@@ -934,6 +934,7 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content" style="background-image:url( 'img/gop/uploads/wedding2.jpg' ); background-size:auto 100%;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
         <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
           <p class="close" style="color:green;opacity:0.75;">${{ site.form.photoshoot.price }}</p>
           <h4 class="modal-title">Build Your Own Photoshoot <span style="color:green;opacity:0.75;">{{ site.form.photoshoot.subtitle }}</span></h4>
         </div>
