@@ -656,8 +656,6 @@
                                       <div class="price"><span class="number"><sup>$</sup>1000</span></div>
                                       <ul class="list-group">
                                           <li class="list-group-item" style="margin: -10px 0 -10px 0px;">Engagement Session</li>
-                                          <li class="list-group-item" style="margin: -10px 0 -10px 0px;">USB with Images</li>
-                                          <li class="list-group-item" style="margin: -10px 0 -10px 0px;">Printing Rights</li>
                                           <li class="list-group-item" style="margin: -10px 0 -10px 0px;">1 Photographer</li>
                                           <li class="list-group-item" style="margin: -10px 0 -10px 0px;">6 Hours of Coverage</li>
                                           <li class="list-group-item" style="margin: -10px 0 -10px 0px;">-</li>
@@ -676,8 +674,6 @@
                                       <div class="price"><span class="number"><sup>$</sup>1800</span></div>
                                       <ul class="list-group">
                                           <li class="list-group-item" style="margin: -10px 0 -10px 0px;">Engagement Session</li>
-                                          <li class="list-group-item" style="margin: -10px 0 -10px 0px;">USB with Images</li>
-                                          <li class="list-group-item" style="margin: -10px 0 -10px 0px;">Printing Rights</li>
                                           <li class="list-group-item" style="margin: -10px 0 -10px 0px;">2 Photographers</li>
                                           <li class="list-group-item" style="margin: -10px 0 -10px 0px;">8 Hour Coverage</li>
                                           <li class="list-group-item" style="margin: -10px 0 -10px 0px;">18x24 Framed Photo</li>
@@ -696,8 +692,6 @@
                                       <div class="price"><span class="number"><sup>$</sup>2500</span></div>
                                       <ul class="list-group">
                                           <li class="list-group-item" style="margin: -10px 0 -10px 0px;">Engagement &amp; Maternity Session</li>
-                                          <li class="list-group-item" style="margin: -10px 0 -10px 0px;">USB with Images</li>
-                                          <li class="list-group-item" style="margin: -10px 0 -10px 0px;">Printing Rights</li>
                                           <li class="list-group-item" style="margin: -10px 0 -10px 0px;">2 Photographers</li>
                                           <li class="list-group-item" style="margin: -10px 0 -10px 0px;">10 Hour Coverage</li>
                                           <li class="list-group-item" style="margin: -10px 0 -10px 0px;">24x36 Framed Photo</li>
@@ -715,6 +709,14 @@
           </div>
       </div>
   </section>
+
+  <!-- Pay Now -->
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="btn btn-block btn-full-width">
+    <input type="hidden" name="cmd" value="_s-xclick">
+    <input type="hidden" name="hosted_button_id" value="R6J7RQ3C3M5HL">
+    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+  </form>
 
   <!-- Contact Section -->
   <section id="contact">
@@ -866,8 +868,13 @@
       </div>
   </section>
 
-  <!-- Block Button Call to Action -->
-  <a href="#pricing" class="btn btn-block btn-full-width">Book Us Now!</a>
+  <!-- Pay Now -->
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="btn btn-block btn-full-width">
+    <input type="hidden" name="cmd" value="_s-xclick">
+    <input type="hidden" name="hosted_button_id" value="R6J7RQ3C3M5HL">
+    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+  </form>
 
   <!-- HOLDER -->
   <div ng-show="false" class="form-group">
@@ -931,7 +938,7 @@
   <!-- Package Modal -->
   <div id="packageModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content" style="background-image:url( 'img/gop/uploads/wedding2.jpg' ); background-size:auto 100%;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
+      <div class="modal-content" style="text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <p class="close" style="color:green;opacity:0.75;">${{ site.form.photoshoot.price }}</p>
@@ -943,12 +950,17 @@
               <div class="form-group">
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <label class="control-label col-sm-4" for="numPeople" style="text-align: left;"># of People:</label>
-                    <div class="col-sm-5">
-                      <input class="form-control" type="range" name="numPeople" id="numPeople" value="{{site.form.photoshoot.numPeople}}" min="1" max="10" step="1" ng-model="site.form.photoshoot.numPeople" ng-change="updatePhotoshootPrice()">
-                    </div>
-                    <div class="col-sm-3">
-                      <input class="form-control" type="input" value="{{site.form.photoshoot.numPeople}}" style="text-align: center;" disabled>
+                    <label class="control-label col-sm-4" for="event" style="text-align: left;">Event Type:</label>
+                    <div class="col-sm-8">
+                      <select class="form-control" name="event" id="event" value="{{site.form.photoshoot.event}}" ng-model="site.form.photoshoot.event" ng-change="updatePhotoshootPrice()">
+                        <option value="single">Singles</option>
+                        <option value="couple">Couples</option>
+                        <option value="group">Group</option>
+                        <option value="head">Headshots</option>
+                        <option value="auto">Automotive</option>
+                        <option value="special">Special Event</option>
+                        <option value="npo">Non Profit Org</option>
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -1009,7 +1021,7 @@
   <!-- Wedding Modal -->
   <div id="weddingModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content" style="background-image:url( 'img/gop/uploads/wedding2.jpg' ); background-size:auto 100%;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
+      <div class="modal-content" style="text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <p class="close" style="color:green;opacity:0.75;">${{ site.form.wedding.price }}</p>
@@ -1047,7 +1059,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-3" for="numHard" style="text-align: left;"># of Hard Cover Albums (13"x11"):</label>
                     <div class="col-sm-6">
-                      <input class="form-control" type="range" name="numHard" id="numHard" value="{{site.form.wedding.numHard}}" min="0" max="100" step="1" ng-model="site.form.wedding.numHard" ng-change="updateWeddingPrice()">
+                      <input class="form-control" type="range" name="numHard" id="numHard" value="{{site.form.wedding.numHard}}" min="0" max="10" step="1" ng-model="site.form.wedding.numHard" ng-change="updateWeddingPrice()">
                     </div>
                     <div class="col-sm-3">
                       <input class="form-control" type="input" value="{{site.form.wedding.numHard}}" style="text-align: center;" disabled>
@@ -1058,7 +1070,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-3" for="numSoft" style="text-align: left;"># of Soft Cover Albums (7"x7"):</label>
                     <div class="col-sm-6">
-                      <input class="form-control" type="range" name="numSoft" id="numSoft" value="{{site.form.wedding.numSoft}}" min="0" max="100" step="1" ng-model="site.form.wedding.numSoft" ng-change="updateWeddingPrice()">
+                      <input class="form-control" type="range" name="numSoft" id="numSoft" value="{{site.form.wedding.numSoft}}" min="0" max="10" step="1" ng-model="site.form.wedding.numSoft" ng-change="updateWeddingPrice()">
                     </div>
                     <div class="col-sm-3">
                       <input class="form-control" type="input" value="{{site.form.wedding.numSoft}}" style="text-align: center;" disabled>
@@ -1071,7 +1083,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-3" for="numLarge" style="text-align: left;"># of Prints (24"x36"):</label>
                     <div class="col-sm-6">
-                      <input class="form-control" type="range" name="numLarge" id="numLarge" value="{{site.form.wedding.numLarge}}" min="0" max="100" step="1" ng-model="site.form.wedding.numLarge" ng-change="updateWeddingPrice()">
+                      <input class="form-control" type="range" name="numLarge" id="numLarge" value="{{site.form.wedding.numLarge}}" min="0" max="10" step="1" ng-model="site.form.wedding.numLarge" ng-change="updateWeddingPrice()">
                     </div>
                     <div class="col-sm-3">
                       <input class="form-control" type="input" value="{{site.form.wedding.numLarge}}" style="text-align: center;" disabled>
@@ -1082,7 +1094,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-3" for="numSmall" style="text-align: left;"># of Prints (18"x24"):</label>
                     <div class="col-sm-6">
-                      <input class="form-control" type="range" name="numSmall" id="numSmall" value="{{site.form.wedding.numSmall}}" min="0" max="100" step="1" ng-model="site.form.wedding.numSmall" ng-change="updateWeddingPrice()">
+                      <input class="form-control" type="range" name="numSmall" id="numSmall" value="{{site.form.wedding.numSmall}}" min="0" max="10" step="1" ng-model="site.form.wedding.numSmall" ng-change="updateWeddingPrice()">
                     </div>
                     <div class="col-sm-3">
                       <input class="form-control" type="input" value="{{site.form.wedding.numSmall}}" style="text-align: center;" disabled>
@@ -1112,6 +1124,11 @@
                       </select>
                     </div>
                   </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12 text-center" style="color: green;opacity: 0.75;">
+                  <p><strong>All packages come with printing rights and a USB containing all your images</strong></p>
                 </div>
               </div>
               <div class="form-group">

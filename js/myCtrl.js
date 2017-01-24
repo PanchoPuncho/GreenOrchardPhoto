@@ -26,7 +26,7 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
         form : {
             photoshoot : {
                 subtitle    : "",
-                numPeople   : "",
+                event       : "",
                 hours       : "",
                 numPhotos   : "",
                 price       : 0.00
@@ -94,19 +94,19 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
     $scope.loadPackage = function( package ) {
         if ( package === "singles" ) {
             $scope.site.form.photoshoot.subtitle    = "- Singles Package! Save 5%";
-            $scope.site.form.photoshoot.numPeople   = "1";
+            $scope.site.form.photoshoot.event       = "single";
             $scope.site.form.photoshoot.hours       = "1";
             $scope.site.form.photoshoot.numPhotos   = "25";
             $scope.updatePhotoshootPrice();
         } else if ( package === "couples" ) {
             $scope.site.form.photoshoot.subtitle    = "- Couples Package! Save 8%";
-            $scope.site.form.photoshoot.numPeople   = "2";
+            $scope.site.form.photoshoot.event       = "couple";
             $scope.site.form.photoshoot.hours       = "1";
             $scope.site.form.photoshoot.numPhotos   = "30";
             $scope.updatePhotoshootPrice();
         } else if ( package === "family" ) {
             $scope.site.form.photoshoot.subtitle    = "- Family Package! Save 9%";
-            $scope.site.form.photoshoot.numPeople   = "3";
+            $scope.site.form.photoshoot.event       = "group";
             $scope.site.form.photoshoot.hours       = "1";
             $scope.site.form.photoshoot.numPhotos   = "35";
             $scope.updatePhotoshootPrice();
@@ -288,7 +288,7 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
      *
      **/
     $scope.singles = function() {
-        if ( $scope.site.form.photoshoot.numPeople === "1" && $scope.site.form.photoshoot.hours === "1" && $scope.site.form.photoshoot.numPhotos === "25" ) {
+        if ( $scope.site.form.photoshoot.event === "single" && $scope.site.form.photoshoot.hours === "1" && $scope.site.form.photoshoot.numPhotos === "25" ) {
             $scope.site.form.photoshoot.subtitle = "- Singles Package! Save 5%";
             return true;
         } else {
@@ -300,7 +300,7 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
      *
      **/
     $scope.couples = function() {
-        if ( $scope.site.form.photoshoot.numPeople === "2" && $scope.site.form.photoshoot.hours === "1" && $scope.site.form.photoshoot.numPhotos === "30" ) {
+        if ( $scope.site.form.photoshoot.event === "couple" && $scope.site.form.photoshoot.hours === "1" && $scope.site.form.photoshoot.numPhotos === "30" ) {
             $scope.site.form.photoshoot.subtitle = "- Couples Package! Save 8%";
             return true;
         } else {
@@ -312,7 +312,7 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
      *
      **/
     $scope.family = function() {
-        if ( $scope.site.form.photoshoot.numPeople === "3" && $scope.site.form.photoshoot.hours === "1" && $scope.site.form.photoshoot.numPhotos === "35" ) {
+        if ( $scope.site.form.photoshoot.event === "group" && $scope.site.form.photoshoot.hours === "1" && $scope.site.form.photoshoot.numPhotos === "35" ) {
             $scope.site.form.photoshoot.subtitle = "- Family Package! Save 9%";
             return true;
         } else {
@@ -334,23 +334,37 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
             $scope.site.form.photoshoot.price = 250;
         } else {
             $scope.site.form.photoshoot.subtitle = "";
-            var people = $scope.calcPhotoshootPeoplePrice();
+            var event = $scope.calcPhotoshootEventPrice();
             var hours = $scope.calcPhotoshootHoursPrice();
-            var photos = $scope.calcPhotoshootPhotosPrice();
-            $scope.site.form.photoshoot.price = ( people + hours + photos );
+            if ( $scope.site.form.photoshoot.event === "special" || $scope.site.form.photoshoot.event === "npo" ) {
+                $scope.site.form.photoshoot.price = ( event + hours );
+            } else {
+                var photos = $scope.calcPhotoshootPhotosPrice();
+                $scope.site.form.photoshoot.price = ( event + hours + photos );
+            }
         }
     };
 
-    $scope.calcPhotoshootPeoplePrice = function() {
-        console.log( "calcPhotoshootPeoplePrice( " + $scope.site.form.photoshoot.numPeople + " )" );
+    $scope.calcPhotoshootEventPrice = function() {
+        console.log( "calcPhotoshootEventPrice( " + $scope.site.form.photoshoot.event + " )" );
 
-        switch ( $scope.site.form.photoshoot.numPeople ) {
-            case "1":
+        switch ( $scope.site.form.photoshoot.event ) {
+            case "single":
                 return 75;
-            case "2":
+            case "couple":
                 return 130;
+            case "group":
+                return 210;
+            case "head":
+                return 30;
+            case "auto":
+                return 25;
+            case "special":
+                return 250;
+            case "npo":
+                return 15;
             default:
-                return 200;
+                window.alert( "ERROR: calcPhotoshootEventPrice() failed! Contact the developer." );
         }
     };
 
