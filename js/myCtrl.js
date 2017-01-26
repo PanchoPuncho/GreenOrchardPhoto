@@ -6,7 +6,10 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
         user : {
             id      : "",
             name    : "",
-            email   : ""
+            email   : "",
+            phone   : "",
+            message : "",
+            price   : 0.00
         },
         options : {
             
@@ -28,8 +31,7 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
                 subtitle    : "",
                 event       : "",
                 hours       : "",
-                numPhotos   : "",
-                price       : 0.00
+                numPhotos   : ""
             },
             wedding : {
                 subtitle    : "",
@@ -40,8 +42,7 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
                 numLarge    : "0",
                 numSmall    : "0",
                 engSess     : "no",
-                matSess     : "no",
-                price       : 0.00
+                matSess     : "no"
             }
         }
     };
@@ -193,11 +194,11 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
         console.log( "updateWeddingPrice()" );
 
         if ( $scope.bronze() ) {
-            $scope.site.form.wedding.price = 1000;
+            $scope.data.user.price = 1000;
         } else if ( $scope.silver() ) {
-            $scope.site.form.wedding.price = 1800;
+            $scope.data.user.price = 1800;
         } else if ( $scope.gold() ) {
-            $scope.site.form.wedding.price = 2500;
+            $scope.data.user.price = 2500;
         } else {
             $scope.site.form.wedding.subtitle = "";
             var eng = $scope.calcEngagementPrice();
@@ -208,7 +209,7 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
             var soft = $scope.site.form.wedding.numSoft;
             var large = $scope.site.form.wedding.numLarge;
             var small = $scope.site.form.wedding.numSmall;
-            $scope.site.form.wedding.price = ( hours + pgs + eng + mat + (parseInt(hard) * 210) + (parseInt(soft) * 80) + (parseInt(large) * 60) + (parseInt(small) * 35) );
+            $scope.data.user.price = ( hours + pgs + eng + mat + (parseInt(hard) * 210) + (parseInt(soft) * 80) + (parseInt(large) * 60) + (parseInt(small) * 35) );
         }
     };
 
@@ -327,20 +328,20 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
         console.log( "updatePhotoshootPrice()" );
 
         if ( $scope.singles() ) {
-            $scope.site.form.photoshoot.price = 125;
+            $scope.data.user.price = 125;
         } else if ( $scope.couples() ) {
-            $scope.site.form.photoshoot.price = 175;
+            $scope.data.user.price = 175;
         } else if ( $scope.family() ) {
-            $scope.site.form.photoshoot.price = 250;
+            $scope.data.user.price = 250;
         } else {
             $scope.site.form.photoshoot.subtitle = "";
             var event = $scope.calcPhotoshootEventPrice();
             var hours = $scope.calcPhotoshootHoursPrice();
             if ( $scope.site.form.photoshoot.event === "special" || $scope.site.form.photoshoot.event === "npo" ) {
-                $scope.site.form.photoshoot.price = ( event + hours );
+                $scope.data.user.price = ( event + hours );
             } else {
                 var photos = $scope.calcPhotoshootPhotosPrice();
-                $scope.site.form.photoshoot.price = ( event + hours + photos );
+                $scope.data.user.price = ( event + hours + photos );
             }
         }
     };
@@ -430,8 +431,110 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
         }
     };
 
+    /**
+     *
+     **/
+    $scope.sendPhotoshootEmails = function() {
+        $scope.url = "/php/photoshoot_email_me.php";
+        $scope.parameters = "?event=" + $scope.site.form.photoshoot.event
+            + "&hours=" + $scope.site.form.photoshoot.hours
+            + "&numPhotos=" + $scope.site.form.photoshoot.numPhotos
+            + "&name=" + $scope.data.user.name
+            + "&email=" + $scope.data.user.email
+            + "&phone=" + $scope.data.user.phone
+            + "&message=" + $scope.data.user.message
+            + "&price=" + $scope.data.user.price;
+        console.log( "GET: " + $scope.url + $scope.parameters );
+        $http.get( $scope.url + $scope.parameters ).then(function ( response ) {
+            if ( response.status === 200 ) {
+                $scope.url = "/php/photoshoot_email_client.php";
+                console.log( "GET: " + $scope.url + $scope.parameters );
+                $http.get( $scope.url + $scope.parameters ).then(function ( response ) {
+                    if ( response.status === 200 ) {
+                        // Success
+                        console.log( "success" );
+                        $('#photoshoot-success').html("<div class='alert alert-success'>");
+                        $('#photoshoot-success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>");
+                        $('#photoshoot-success > .alert-success').append("<strong>Your message has been sent. </strong>");
+                        $('#photoshoot-success > .alert-success').append('</div>');
+                        $('#photoshootForm').trigger("reset");
+                    } else {
+                        // Failure
+                        console.log( "later failure" );
+                        $('#photoshoot-success').html("<div class='alert alert-danger'>");
+                        $('#photoshoot-success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>");
+                        $('#photoshoot-success > .alert-danger').append("<strong>Sorry, it seems that my mail server is not responding and could not reach you. Please try again later!");
+                        $('#photoshoot-success > .alert-danger').append('</div>');
+                    }
+                });
+            } else {
+                // Failure
+                console.log( "early failure" );
+                $('#photoshoot-success').html("<div class='alert alert-danger'>");
+                $('#photoshoot-success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>");
+                $('#photoshoot-success > .alert-danger').append("<strong>Sorry, it seems that my mail server is not responding and could not reach you. Please try again later!");
+                $('#photoshoot-success > .alert-danger').append('</div>');
+            }
+        });
+    };
+
+    /**
+     *
+     **/
+    $scope.sendWeddingEmails = function() {
+        $scope.url = "/php/wedding_email_me.php";
+        $scope.parameters = "?numHours=" + $scope.site.form.wedding.numHours
+            + "&numShooters=" + $scope.site.form.wedding.numShooters
+            + "&numHard=" + $scope.site.form.wedding.numHard
+            + "&numSoft=" + $scope.site.form.wedding.numSoft
+            + "&numLarge=" + $scope.site.form.wedding.numLarge
+            + "&numSmall=" + $scope.site.form.wedding.numSmall
+            + "&engSess=" + $scope.site.form.wedding.engSess
+            + "&matSess=" + $scope.site.form.wedding.matSess
+            + "&name=" + $scope.data.user.name
+            + "&email=" + $scope.data.user.email
+            + "&phone=" + $scope.data.user.phone
+            + "&message=" + $scope.data.user.message
+            + "&price=" + $scope.data.user.price;
+        console.log( "GET: " + $scope.url + $scope.parameters );
+        $http.get( $scope.url + $scope.parameters ).then(function ( response ) {
+            console.log( JSON.stringify( response, undefined, 2 ) );
+            if ( response.status === 200 ) {
+                $scope.url = "/php/wedding_email_client.php";
+                console.log( "GET: " + $scope.url + $scope.parameters );
+                $http.get( $scope.url + $scope.parameters ).then(function ( response ) {
+                    if ( response.status === 200 ) {
+                        console.log( JSON.stringify( response, undefined, 2 ) );
+                        // Success
+                        console.log( "success" );
+                        $('#wedding-success').html("<div class='alert alert-success'>");
+                        $('#wedding-success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>");
+                        $('#wedding-success > .alert-success').append("<strong>Your message has been sent. </strong>");
+                        $('#wedding-success > .alert-success').append('</div>');
+                        $('#weddingForm').trigger("reset");
+                    } else {
+                        // Failure
+                        console.log( "later failure" );
+                        $('#wedding-success').html("<div class='alert alert-danger'>");
+                        $('#wedding-success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>");
+                        $('#wedding-success > .alert-danger').append("<strong>Sorry, it seems that my mail server is not responding and could not reach you. Please try again later!");
+                        $('#wedding-success > .alert-danger').append('</div>');
+                    }
+                });
+            } else {
+                // Failure
+                console.log( "early failure" );
+                $('#wedding-success').html("<div class='alert alert-danger'>");
+                $('#wedding-success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>");
+                $('#wedding-success > .alert-danger').append("<strong>Sorry, it seems that my mail server is not responding and could not reach you. Please try again later!");
+                $('#wedding-success > .alert-danger').append('</div>');
+            }
+        });
+    };
+
 
     /********** DRIVER **********/
+
 
     $scope.url = "/php/getPhotos.php";
     console.log( "GET: " + $scope.url );

@@ -19,16 +19,16 @@
 
    // parameters
    $name = $_POST['name'];
-   $email_address = $_POST['email'];
+   $email = $_POST['email'];
    $phone = $_POST['phone'];
    $message = $_POST['message'];
    	
    // create email body and send it	
    $to = 'cuevas500@gmail.com';
    $email_subject = "GOP Contact Request - $name";
-   $email_body = "A client has emailed your through the contact form on your site.\n\n"."The details are below:\n\nName: $name\n\nEmail: $email_address\n\nPhone: $phone\n\nMessage:\n$message";
+   $email_body = "A client has emailed your through the contact form on your site.\n\n"."The details are below:\n\nName: $name\n\nEmail: $email\n\nPhone: $phone\n\nMessage:\n$message";
    $headers = "From: noreply@greenorchardphoto.com\n";
-   $headers .= "Reply-To: $email_address";	
+   $headers .= "Reply-To: $email";	
    mail($to,$email_subject,$email_body,$headers,"-r noreply@greenorchardphoto.com");
    return true;
 ?>
