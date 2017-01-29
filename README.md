@@ -9,17 +9,17 @@
 ### Gallery
 ### Extract feedback from facebook
 ### Contact me page
-#### Email notifications
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email notifications
 ### Update portfolio section to be dynamic for easier addition/removal
 ### Portfolio
 ### Facebook integration!
-#### Login
-#### Check and react to status
-#### Logout
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check and react to status
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logout
 ### Admin page
-#### Add picture section (to DB and server)
-#### Delete picture section (from DB and server)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add picture section (to DB and server)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete picture section (from DB and server)
 ### Book me now page/Build your own package page
-#### photoshoot
-#### wedding
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;photoshoot
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wedding
 ### PayPal Integration
