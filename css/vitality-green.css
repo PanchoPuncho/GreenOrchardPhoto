@@ -530,7 +530,7 @@ aside.cta-quote span.quote {
 }
 .about-carousel .item .caption {
   padding: 15px;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 1);
   width: 100%;
   margin: auto;
   position: absolute;
@@ -860,7 +860,7 @@ aside.cta-quote span.quote {
   cursor: pointer;
 }
 .portfolio-modal .close-modal:hover {
-  opacity: 0.3;
+  opacity: 0.9;
 }
 .portfolio-modal .close-modal .lr {
   height: 75px;
@@ -958,7 +958,7 @@ aside.cta-quote span.quote {
 #portfoliolist .mix {
   width: 31%;
   margin: 1%;
-  display: none;
+  /*display: none;*/
   float: left;
   overflow: hidden;
 }
@@ -967,6 +967,7 @@ aside.cta-quote span.quote {
   position: relative !important;
   background: #222;
   cursor: pointer;
+  max-height: 235.516px;
 }
 #portfoliolist .mix .portfolio-wrapper img {
   max-width: 100%;
@@ -1013,6 +1014,12 @@ aside.cta-quote span.quote {
 }
 #portfoliolist .mix:hover .portfolio-wrapper .caption {
   bottom: 0px;
+}
+.delete {
+   background-color: #5CB85C;
+}
+.delete:hover{
+   background-color: red;
 }
 /*  #Mobile (Portrait) - Note: Design for a width of 320px */
 @media only screen and (max-width: 767px) {
@@ -1092,7 +1099,6 @@ aside.cta-quote span.quote {
   position: relative;
   margin-bottom: 0;
   padding-bottom: 0.5em;
-  border-bottom: 1px solid #e1e1e1;
 }
 .floating-label-form-group input,
 .floating-label-form-group textarea {
@@ -1106,6 +1112,7 @@ aside.cta-quote span.quote {
   background: none;
   box-shadow: none !important;
   resize: none;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 .floating-label-form-group label {
   display: block;
