@@ -57,12 +57,12 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
         $scope.site.sceneryActive = "";
         $scope.site.autoActive = "";
         $scope.site.graphicActive = "";
+        $scope.site.photoshootActive = "";
 
         if ( cat === "all" ) {
             $scope.site.allActive = "active";
             $scope.site.portfolio.photos = $scope.site.portfolio.allPhotos;
         } else {
-
             if ( cat === "WEDD" ) {
                 $scope.site.weddingActive = "active";
             } else if ( cat === "SCEN" ) {
@@ -71,6 +71,8 @@ app.controller("myCtrl", ['$scope', '$window', '$http', function ($scope, $windo
                 $scope.site.autoActive = "active";
             } else if ( cat === "GRPH" ) {
                 $scope.site.graphicActive = "active";
+            } else if ( cat === "PHSH" ) {
+                $scope.site.photoshootActive = "active";
             }
             var newList = [];
             angular.forEach( $scope.site.portfolio.allPhotos, function( x ) {

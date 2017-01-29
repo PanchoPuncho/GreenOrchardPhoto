@@ -59,7 +59,7 @@
    $message    = $_GET['message'];
    	
    // create email body and send it	
-   $to = 'cuevas500@gmail.com';
+   $to = 'rafael@greenorchardphoto.com,greenorchardprod@gmail.com';
    $email_subject = "GOP Wedding Request - $name";
    $email_body = "Rafa,\n\nA client, $name, has emailed your through the photoshoot form on your site. The details are below:\n\nNumber of hours: $numHours\nNumber of photographers: $numShooters\nNumber of Hard Albums: $numHard\nNumber of Soft Albums: $numSoft\nNumber of 24x36 prints: $numLarge\nNumber of 18x24 prints: $numSmall\nEngagement session: $engSess\nMaternity session: $matSess\nPrice: \$$price.00\nName: $name\nEmail: $email\nPhone: $phone\nMessage:\n$message";
    $headers = "From: noreply@greenorchardphoto.com\n\t";

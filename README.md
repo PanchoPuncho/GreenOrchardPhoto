@@ -1,8 +1,5 @@
 # GreenOrchardPhoto
 
-ToDo:
-	- Pay now (PayPal?)
-
 Done:
 	- Version control with GitHub
 	- Strip template
@@ -29,6 +26,7 @@ Done:
 	- Book me now page/Build your own package page
 		# photoshoot
 		# wedding
+	- Pay now (PayPal?)
 
 
 

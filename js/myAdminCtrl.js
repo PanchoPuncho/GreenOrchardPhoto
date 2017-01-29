@@ -39,6 +39,7 @@ app.controller( "myAdminCtrl", ['$scope', '$window', '$timeout', '$http', functi
         $scope.site.sceneryActive = "";
         $scope.site.autoActive = "";
         $scope.site.graphicActive = "";
+        $scope.site.photoshootActive = "";
 
         if ( cat === "all" ) {
             $scope.site.allActive = "active";
@@ -53,6 +54,8 @@ app.controller( "myAdminCtrl", ['$scope', '$window', '$timeout', '$http', functi
                 $scope.site.autoActive = "active";
             } else if ( cat === "GRPH" ) {
                 $scope.site.graphicActive = "active";
+            } else if ( cat === "PHSH" ) {
+                $scope.site.photoshootActive = "active";
             }
             var newList = [];
             angular.forEach( $scope.site.portfolio.allPhotos, function( x ) {

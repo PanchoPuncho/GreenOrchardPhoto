@@ -24,7 +24,7 @@
    $message = $_POST['message'];
    	
    // create email body and send it	
-   $to = 'cuevas500@gmail.com';
+   $to = 'rafael@greenorchardphoto.com,greenorchardprod@gmail.com';
    $email_subject = "GOP Contact Request - $name";
    $email_body = "A client has emailed your through the contact form on your site.\n\n"."The details are below:\n\nName: $name\n\nEmail: $email\n\nPhone: $phone\n\nMessage:\n$message";
    $headers = "From: noreply@greenorchardphoto.com\n";

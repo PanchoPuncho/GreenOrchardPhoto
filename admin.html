@@ -108,6 +108,7 @@
 		                                <option value="SCEN">scenery</option>
 		                                <option value="AUTO">automobile</option>
 		                                <option value="GRPH">graphic</option>
+		                                <option value="PHSH">photoshoot</option>
 		                            </select>
 									<p class="help-block text-danger"></p>
 								</div>
@@ -151,6 +152,9 @@
 							 <li>
 								<button class="filter {{site.graphicActive}}" ng-click="filterPortfolioPhotos( 'GRPH' )">Graphics</button>
 							</li>
+							<li>
+                              <button class="filter {{site.photoshootActive}}" ng-click="filterPortfolioPhotos( 'PHSH' )">Portrait</button>
+                          </li>
 					  	</ul>
 				  	</div>
 			  	</div>
