@@ -1,5 +1,7 @@
 # GreenOrchardPhoto
 
+Version: 01.00.00
+
 ## Steps
 ### Migrate content and images from wordpress site
 ### Create pricing section
