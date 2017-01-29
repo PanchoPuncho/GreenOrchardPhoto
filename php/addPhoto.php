@@ -1,6 +1,6 @@
 <?php
     // Create connection
-    $con =  mysqli_connect( 'aa1s0dvzo1z36gg.cn7hlcsjbshk.us-east-1.rds.amazonaws.com:3306', 'franciscocuevas', 'supersecretpassword', 'ebdb', 3306 );
+    $con =  mysqli_connect( "localhost", "greenorc_user", "#uper#ecretpa##word123", "greenorc_database" );
 
     // Check connection
     if ( mysqli_connect_errno() ) {
